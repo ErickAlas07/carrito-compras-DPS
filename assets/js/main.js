@@ -1,1 +1,0 @@
-import { mostrarProductos } from "./modules/inventario.js";
