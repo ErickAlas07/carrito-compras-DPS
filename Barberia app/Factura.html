@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factura - Barbería Alura</title>
+    
+    <!-- Archivos CSS -->
+    <link rel="stylesheet" href="assets/CSS/Base/reset.css">
+    <link rel="stylesheet" href="assets/CSS/Base/carrito.css">
+    <link rel="stylesheet" href="assets/CSS/Base/factura.css">
+    
+ 
+<body>
+    <!-- Header (incluido para mantener consistencia) -->
+    <header>
+        <div class="caja">
+            <h1><img src="assets/Imagenes/logo.png" alt="Logo de la Barbería Alura"></h1>
+            <button class="menu-toggle" aria-label="Menú">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="carrito.html">Carrito</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenedor de la factura -->
+    <main>
+        <div id="factura-contenedor">
+            <!-- La factura se cargará aquí dinámicamente -->
+        </div>
+        
+        <!-- Botones de acción -->
+        <div class="factura-acciones no-print">
+            <button id="btn-imprimir" class="btn-imprimir">
+                🖨️ Imprimir Factura
+            </button>
+            <a href="productos.html" class="btn-volver">
+                ← Seguir Comprando
+            </a>
+            <a href="carrito.html" class="btn-volver">
+                🛒 Volver al Carrito
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <img src="assets/Imagenes/logo-blanco.png" alt="Logo de la Barbería Alura">
+        <p class="copyright">&copy Copyright Barbería Alura - 2020</p>
+    </footer>
+
+    <!-- Archivos JavaScript -->
+    <script src="assets/JS/menu.js"></script>
+    <script src="assets/JS/factura.js"></script>
+</body>
+</html>

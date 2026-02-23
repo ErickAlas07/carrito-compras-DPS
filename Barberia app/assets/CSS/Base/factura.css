@@ -1,0 +1,261 @@
+/* ===== assets/CSS/factura.css ===== */
+
+/* Contenedor principal de la factura */
+.factura-page {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* Encabezado de la factura */
+.factura-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #c78c19;
+}
+
+.factura-header h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.factura-header p {
+    color: #666;
+    margin: 5px 0;
+}
+
+/* Información de la empresa */
+.factura-empresa {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+.factura-empresa h3 {
+    font-size: 20px;
+    color: #c78c19;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.factura-empresa p {
+    color: #666;
+    margin: 5px 0;
+}
+
+/* Tabla de productos en factura */
+.factura-tabla {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+.factura-tabla th {
+    background: #333;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.factura-tabla td {
+    padding: 12px;
+    border-bottom: 1px solid #e0e0e0;
+    color: #333;
+}
+
+.factura-tabla tfoot {
+    font-weight: bold;
+}
+
+.factura-tabla tfoot tr td {
+    padding: 10px 12px;
+    background: #f5f5f5;
+}
+
+.factura-tabla .total-row {
+    font-size: 18px;
+    color: #c78c19;
+    border-top: 2px solid #c78c19;
+}
+
+.factura-tabla .total-row td {
+    background: #fff3e0;
+}
+
+.text-right {
+    text-align: right;
+}
+
+/* Pie de página de la factura */
+.factura-footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.factura-footer p {
+    color: #666;
+    margin: 5px 0;
+    font-style: italic;
+}
+
+.factura-footer p:first-child {
+    font-size: 18px;
+    color: #c78c19;
+    font-weight: bold;
+}
+
+/* Botones de acción */
+.factura-acciones {
+    text-align: center;
+    margin: 30px 0 50px;
+}
+
+.btn-imprimir, .btn-volver {
+    padding: 12px 30px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.btn-imprimir {
+    background: #c78c19;
+    color: white;
+}
+
+.btn-volver {
+    background: #333;
+    color: white;
+}
+
+.btn-imprimir:hover {
+    background: darkorange;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(199, 140, 25, 0.3);
+}
+
+.btn-volver:hover {
+    background: #555;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Mensaje de error cuando no hay factura */
+.factura-error {
+    text-align: center;
+    padding: 60px 20px;
+    background: #f9f9f9;
+    border-radius: 12px;
+    color: #666;
+    font-size: 18px;
+}
+
+/* Estilos para impresión */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    
+    .factura-page {
+        box-shadow: none;
+        margin: 0;
+        padding: 20px;
+    }
+    
+    .factura-tabla th {
+        background: #333 !important;
+        color: white !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    
+    .factura-tabla .total-row td {
+        background: #fff3e0 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
+
+/* Responsive para factura */
+@media screen and (max-width: 768px) {
+    .factura-page {
+        margin: 20px;
+        padding: 20px;
+    }
+    
+    .factura-header h2 {
+        font-size: 24px;
+    }
+    
+    .factura-tabla {
+        font-size: 13px;
+    }
+    
+    .factura-tabla th,
+    .factura-tabla td {
+        padding: 8px;
+    }
+    
+    .btn-imprimir, .btn-volver {
+        padding: 10px 20px;
+        margin: 5px;
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .factura-page {
+        margin: 10px;
+        padding: 15px;
+    }
+    
+    .factura-header h2 {
+        font-size: 20px;
+    }
+    
+    .factura-empresa {
+        padding: 15px;
+    }
+    
+    .factura-tabla {
+        font-size: 12px;
+    }
+    
+    .factura-tabla th,
+    .factura-tabla td {
+        padding: 6px;
+    }
+    
+    .factura-tabla .total-row {
+        font-size: 16px;
+    }
+    
+    .factura-acciones {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin: 20px;
+    }
+    
+    .btn-imprimir, .btn-volver {
+        margin: 0;
+        text-align: center;
+    }
+}

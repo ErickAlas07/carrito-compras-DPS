@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - Barbería Alura</title>
+    <link rel="stylesheet" href="assets/CSS/Base/productos.css">
+ 
+</head>
+<body>
+    <header>
+        <div class="caja">
+            <h1><img src="assets/Imagenes/logo.png" alt="Logo Barbería Alura"></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="carrito.html">Carrito</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h2 class="titulo-principal">Nuestros Productos</h2>
+        
+        <ul class="productos">
+            <!-- Producto 1: Corte de Cabello -->
+            <li>
+                <h2>Corte de Cabello</h2>
+                <img src="assets/Imagenes/cabello.jpg" alt="Corte de cabello profesional">
+                <p class="producto-descripcion">Corte profesional con tijera o máquina, a gusto del cliente. Incluye lavado y peinado.</p>
+                <p class="producto-precio">$10.00</p>
+                <p class="producto-stock">Stock: 15 disponibles</p>
+                <input type="number" class="producto-cantidad" min="1" max="15" value="1">
+                <button class="btn-agregar">Agregar al Carrito</button>
+            </li>
+            
+            <!-- Producto 2: Corte de Barba -->
+            <li>
+                <h2>Corte de Barba</h2>
+                <img src="assets/Imagenes/barba.jpg" alt="Corte de barba profesional">
+                <p class="producto-descripcion">Corte y diseño profesional de barba. Incluye perfilado, acabados y toalla caliente.</p>
+                <p class="producto-precio">$8.00</p>
+                <p class="producto-stock">Stock: 12 disponibles</p>
+                <input type="number" class="producto-cantidad" min="1" max="12" value="1">
+                <button class="btn-agregar">Agregar al Carrito</button>
+            </li>
+            
+            <!-- Producto 3: Paquete Completo -->
+            <li>
+                <h2>Paquete Completo</h2>
+                <img src="assets/Imagenes/cabello+barba.jpg" alt="Paquete completo de cabello y barba">
+                <p class="producto-descripcion">Paquete completo de cabello y barba. Incluye corte, lavado, peinado y perfilado de barba.</p>
+                <p class="producto-precio">$15.00</p>
+                <p class="producto-stock">Stock: 10 disponibles</p>
+                <input type="number" class="producto-cantidad" min="1" max="10" value="1">
+                <button class="btn-agregar">Agregar al Carrito</button>
+            </li>
+            
+            <!-- Producto 4: Shampoo Profesional (NUEVO) -->
+            <li>
+                <h2>Shampoo Profesional</h2>
+                <img src="assets/Imagenes/shampoo.jpg" alt="Shampoo profesional para cabello">
+                <p class="producto-descripcion">Shampoo profesional para todo tipo de cabello. Fórmula con biotina, vitaminas y keratina.</p>
+                <p class="producto-precio">$12.00</p>
+                <p class="producto-stock">Stock: 20 disponibles</p>
+                <input type="number" class="producto-cantidad" min="1" max="20" value="1">
+                <button class="btn-agregar">Agregar al Carrito</button>
+            </li>
+            
+            <!-- Producto 5: Acondicionador (NUEVO) -->
+            <li>
+                <h2>Acondicionador</h2>
+                <img src="assets/Imagenes/acondicionador.jpg" alt="Acondicionador hidratante">
+                <p class="producto-descripcion">Acondicionador hidratante con keratina y aceites naturales. Deja el cabello suave y manejable.</p>
+                <p class="producto-precio">$12.00</p>
+                <p class="producto-stock">Stock: 18 disponibles</p>
+                <input type="number" class="producto-cantidad" min="1" max="18" value="1">
+                <button class="btn-agregar">Agregar al Carrito</button>
+            </li>
+            
+            <!-- Producto 6: Aceite Premium (NUEVO) -->
+            <li>
+                <h2>Aceite Premium</h2>
+                <img src="assets/Imagenes/aceite.jpg" alt="Aceite para barba y cabello">
+                <p class="producto-descripcion">Aceite multiusos para barba y cabello. Con argán, jojoba y vitaminas. Hidratación profunda.</p>
+                <p class="producto-precio">$15.00</p>
+                <p class="producto-stock">Stock: 15 disponibles</p>
+                <input type="number" class="producto-cantidad" min="1" max="15" value="1">
+                <button class="btn-agregar">Agregar al Carrito</button>
+            </li>
+        </ul>
+    </main>
+
+    <footer>
+        <img src="assets/Imagenes/logo-blanco.png" alt="Logo Barbería Alura">
+        <p class="copyright">&copy Copyright Barbería Alura - 2020</p>
+    </footer>
+</body>
+</html>
