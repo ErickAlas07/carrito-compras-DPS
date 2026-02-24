@@ -12,18 +12,29 @@
     </head>
 
     <body>
-        <header>
-            <div class="caja">
-                <h1><img src="assets/Imagenes/logo.png"></h1>
-                <nav>
+        <header class="header">
+            <div class="caja-header">
+                <div class="logo-container">
+                    <h1><img src="assets/Imagenes/logo.png" alt="Logo Barbería" class="logo-img"></h1>
+                </div>
+                
+                <nav class="nav-main">
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="productos.html">Productos</a></li>
-                        <li><a href="Carrito.html">Carrito</a></li>
+                        <!-- <li><a href="Carrito.html">Carrito</a></li> -->
                     </ul>
                 </nav>
+
+                <div class="actions">
+                    <a href="#" id="cartIcon" class="cart-icon-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-bag"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                        <span class="cart-badge" id="cartCount">0</span>
+                    </a>
+                </div>
             </div>
         </header>    
+
         <main>
             <section class="hero">
                 <div class="principal">
@@ -78,9 +89,31 @@
             
         </main>
         
+        <div class="cart-modal-overlay" id="cartOverlay"></div>
+        <div class="cart-modal">
+            <div class="cart-modal-header">
+                <h3>Tu Carrito</h3>
+                <button class="close-modal" id="closeModal">X</button>
+            </div>
+            <div class="cart-modal-body" id="modalCartItems">
+                <div class="cart-empty">
+                    <p>Tu carrito está vacío.</p>
+                </div>
+            </div>
+
+            <div class="cart-modal-footer">
+                <div class="modal-total">
+                    <span>Total:</span>
+                    <span class="total-price" id="modalTotal">$0.00</span>
+                </div>
+                <a href="Carrito.html" class="btn-modal-checkout">Ver Carrito</a>
+            </div>
+        </div>
+
         <footer>
              <!--<img src="assets/Imagenes/logo.png">
             <p class="copyright">&copy Copyright Barbería Alura - 2020</p>-->
+            <p class="copyright">&copy Copyright Barbería - 2026</p>
         </footer>
         
     </body>
