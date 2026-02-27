@@ -10,41 +10,58 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
+    // Calcular totales e impuestos para cada producto y el total general
     let totalGeneral = 0;
+    let impuestoPorcentaje = 0.13; // 13% impuesto
 
     let html = `
-        <h2>Factura - Barbería Alura</h2>
-        <table border="1" width="100%" cellpadding="10">
-            <thead>
-                <tr>
-                    <th>Producto</th>
-                    <th>Precio</th>
-                    <th>Cantidad</th>
-                    <th>Subtotal</th>
-                </tr>
-            </thead>
-            <tbody>
+        <div class="factura-page">
+            <div class="factura-header">
+                <h2>Detalle de Factura - Barbería</h2>
+                <p>Fecha: ${new Date().toLocaleDateString()}</p>
+            </div>
+
+            <table class="factura-tabla">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>+ IVA</th>
+                        <th>Cantidad</th>
+                        <th>Subtotal</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
     `;
 
+    // Recorre el carrito para calcular subtotales, impuestos y totales, y generar el HTML de la tabla
     carrito.forEach(producto => {
 
         const subtotal = producto.precio * producto.cantidad;
-        totalGeneral += subtotal;
+        const impuestos = subtotal * impuestoPorcentaje;
+        const total = subtotal + impuestos;
+
+        totalGeneral += total;
 
         html += `
             <tr>
                 <td>${producto.nombre}</td>
                 <td>$${producto.precio.toFixed(2)}</td>
+                <td>$${impuestos.toFixed(2)}</td>
                 <td>${producto.cantidad}</td>
                 <td>$${subtotal.toFixed(2)}</td>
+                <td>$${total.toFixed(2)}</td>
             </tr>
         `;
     });
 
     html += `
-            </tbody>
-        </table>
-        <h3 style="text-align:right;">Total: $${totalGeneral.toFixed(2)}</h3>
+                </tbody>
+            </table>
+
+            <h3 style="text-align:right;">Total General: $${totalGeneral.toFixed(2)}</h3>
+        </div>
     `;
 
     contenedor.innerHTML = html;
