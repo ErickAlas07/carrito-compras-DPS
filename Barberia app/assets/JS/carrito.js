@@ -25,10 +25,20 @@ document.addEventListener("DOMContentLoaded", function () {
     { id: 4, nombre: "Aceite Premium", descripcion: "Aceite multiusos para barba y cabello.", precio: 15.0, imagen: "assets/Imagenes/aceite.jpg", tipo: "producto", stock: 15 },
   ];
 
-  let inventario = JSON.parse(localStorage.getItem("inventario")) || inventarioDefault;
-  if (!inventario || inventario.length === 0) {
-    inventario = inventarioDefault;
-    localStorage.setItem("inventario", JSON.stringify(inventario));
+  let inventario = [];
+
+  try {
+      const guardado = localStorage.getItem("inventario");
+      if (guardado) {
+          inventario = JSON.parse(guardado);
+      }
+  } catch (error) {
+      console.warn("La información del inventario en localStorage está vacío. Se cargará el inventario por defecto.");
+  }
+
+  if (!inventario || !Array.isArray(inventario) || inventario.length === 0) {
+      inventario = inventarioDefault;
+      localStorage.setItem("inventario", JSON.stringify(inventario));
   }
 
   // --- Función para pintar tarjetas (sirve para Home y Tienda) ---
