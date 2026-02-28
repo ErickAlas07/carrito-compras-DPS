@@ -62,10 +62,36 @@ document.addEventListener("DOMContentLoaded", function () {
         const doc = new jsPDF();
         const pageWidth = doc.internal.pageSize.getWidth();
 
+        // logo en la esquina superior derecha
+        const logoImg = document.getElementById('logoPDF');
+        if (logoImg) {
+            doc.addImage(logoImg, 'PNG', pageWidth - 40, 10, 30, 30);
+        }
+
         doc.setFontSize(18);
         const titulo = "Detalle de Factura - Barbería Alura";
         const textWidth = doc.getTextWidth(titulo);
-        doc.text(titulo, (pageWidth - textWidth) / 2, 20);
+        doc.text(titulo, (pageWidth - textWidth) / 2, 25);
+
+        // datos del cliente
+        const nombreCliente = document.getElementById('clienteNombre')?.value || '';
+        const correoCliente = document.getElementById('clienteCorreo')?.value || '';
+        const telefonoCliente = document.getElementById('clienteTelefono')?.value || '';
+
+        doc.setFontSize(12);
+        let infoY = 35;
+        if (nombreCliente) {
+            doc.text(`Nombre: ${nombreCliente}`, 14, infoY);
+            infoY += 6;
+        }
+        if (correoCliente) {
+            doc.text(`Correo: ${correoCliente}`, 14, infoY);
+            infoY += 6;
+        }
+        if (telefonoCliente) {
+            doc.text(`Teléfono: ${telefonoCliente}`, 14, infoY);
+            infoY += 6;
+        }
 
         let filas = [];
         let totalFinal = 0;
@@ -83,12 +109,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 "$" + subtotal.toFixed(2)
             ]);
         });
-
+        // Usamos autoTable para crear la tabla en el PDF
         doc.autoTable({
             head: [["Producto", "Precio", "IVA", "Cantidad", "Total"]],
             body: filas,
-            startY: 30,
-            headStyles: { fillColor: [199, 140, 25] } // Le puse un toque dorado al PDF
+            startY: infoY + 4,
+            headStyles: { fillColor: [199, 140, 25] }  
         });
 
         doc.setFontSize(14);

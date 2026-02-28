@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="assets/CSS/Base/factura.css" />
   </head>
   <body>
+    <!-- logo al generar el PDF de la factura -->
+    <img id="logoPDF" src="assets/Imagenes/logo.png" alt="Logo" style="display:none;" />
     <header class="header no-print">
       <div class="caja-header">
         <div class="logo-container">
@@ -57,7 +59,7 @@
               <a href="inventario.html">Gestión de Inventario</a>
             </div>
           </div>
-
+          
           <a href="#" id="cartIcon" class="cart-icon-container">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -132,6 +134,7 @@
                 <label>Correo Electrónico</label>
                 <input
                   type="email"
+                  id="clienteCorreo"
                   class="input-padron"
                   placeholder="juan@correo.com"
                   required
@@ -141,6 +144,7 @@
                 <label>Teléfono</label>
                 <input
                   type="tel"
+                  id="clienteTelefono"
                   class="input-padron"
                   placeholder="0000-0000"
                   required
