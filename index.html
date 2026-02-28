@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width"> 
+        <title>Barbería Alura</title>
+        <link rel="stylesheet" href="/Barberia app/assets/CSS/Base/reset.css">
+        <link rel="stylesheet" href="/Barberia app/assets/CSS/Base/style.css">
+        <link rel="stylesheet" href="/Barberia app/assets/CSS/Base/productos.css">
+    </head>
+
+    <body>
+        <header class="header"> 
+            <div class="caja-header">
+                <div class="logo-container">
+                    <h1><img src="/Barberia app/assets/Imagenes/logo.png" alt="Logo Barbería" class="logo-img"></h1>
+                </div>
+                
+                <nav class="nav-main">
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="/Barberia app/productos.html">Tienda</a></li>
+                        <li><a href="/Barberia app/contacto.html">Contacto</a></li>   
+                        <!-- <li><a href="Carrito.html">Carrito</a></li> -->
+                    </ul>
+                </nav>
+
+                <div class="actions">
+                    <div class="admin-menu-container">
+                        <button class="btn-admin-icon" id="btnAdmin" aria-label="Administración">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                            </svg>
+                        </button>
+                        <div class="admin-dropdown" id="adminDropdown">
+                            <a href="inventario.html">Gestión de Inventario</a>
+                        </div>
+                    </div>
+                    
+                    <a href="#" id="cartIcon" class="cart-icon-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-bag"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                        <span class="cart-badge" id="cartCount">0</span>
+                    </a>
+                </div>
+            </div>
+        </header>    
+
+        <main>
+            <section class="hero" style="background-image: url('/Barberia app/assets/Imagenes/slide.jpg');">
+                <div class="hero-content">
+                    <h2 class="hero-title">Elegancia y Tradición para el Caballero Moderno</h2>
+                    <p class="hero-subtitle1">Descubre el arte del buen corte y productos de primera calidad en el corazón de la ciudad.</p>
+                    <a href="/Barberia app/productos.html" class="btn-cta-hero">Ver Tienda</a>
+                </div>
+            </section>
+
+            <section class="sobre-nosotros">
+                <div class="container-sobre-nosotros">
+                    <div class="sobre-imagen">
+                        <img src="/Barberia app/assets/Imagenes/utensilios.jpg" alt="Herramientas de barbería clásicas">
+                        <div class="decoracion-marco"></div> </div>
+
+                    <div class="sobre-texto">
+                    <h2 class="titulo-seccion">Nuestra Historia</h2>
+                    <p>Ubicada en el corazón de la ciudad, la <strong>Barbería Alura</strong> trae para el mercado lo que hay de mejor para su cabello y barba. Fundada en 2020, la Barbería Alura ya es destaque en la ciudad y conquista nuevos clientes diariamente.</p>
+                    
+                    <blockquote class="mision-destacada">
+                        "Proporcionar autoestima y calidad de vida a nuestros clientes."
+                    </blockquote>
+                    
+                    <p>Ofrecemos profesionales experimentados que están constantemente observando los cambios y movimiento en el mundo de la moda, para así ofrecer a nuestros clientes las últimas tendencias. El atendimiento posee un padrón de excelencia y agilidad, garantizando calidad y satisfacción de nuestros clientes.</p>
+                </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="servicios-destacados">
+                <h1 class="titulo-seccion-destacados text-center">Nuestros Servicios Destacados</h1>
+                <p class="hero-subtitle text-center">Ofrecemos una amplia gama de servicios de barbería, desde cortes clásicos hasta estilos modernos, todo con la calidad y profesionalismo que nos caracteriza.</p>
+
+                <div class="productos-grid" id="destacados-container">
+                </div>
+
+                <div class="contenedor-btn-centrado">
+                    <a href="/Barberia app/productos.html" class="btn-cta-hero btn-secundario">Ver toda la tienda →</a>
+                </div>
+            </section>
+
+
+            <section class="diferenciales">
+            <h2 class="titulo-seccion text-center">¿Por qué elegirnos?</h2>
+            <p class="hero-subtitle text-center" style="margin-bottom: 50px; color: #666;">La excelencia está en los detalles.</p>
+
+            <div class="diferenciales-grid">
+                <div class="beneficio-card">
+                    <div class="beneficio-icono">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    </div>
+                    <h3>Atención Personalizada</h3>
+                    <p>Cada cliente es único. Te asesoramos para encontrar el estilo que mejor resalte tu personalidad.</p>
+                </div>
+                
+                <div class="beneficio-card">
+                    <div class="beneficio-icono">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+                    </div>
+                    <h3>Espacio Premium</h3>
+                    <p>Relájate en un ambiente diseñado para tu confort, con buena música y sillas ergonómicas.</p>
+                </div>
+                
+                <div class="beneficio-card">
+                    <div class="beneficio-icono">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    </div>
+                    <h3>Ubicación Céntrica</h3>
+                    <p>Fácil acceso en el corazón de la ciudad con parqueo privado para tu mayor comodidad.</p>
+                </div>
+                
+                <div class="beneficio-card">
+                    <div class="beneficio-icono">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                    </div>
+                    <h3>Profesionales Top</h3>
+                    <p>Barberos en constante capacitación, dominando desde cortes clásicos hasta nuevas tendencias.</p>
+                </div>
+                
+                <div class="beneficio-card">
+                    <div class="beneficio-icono">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    </div>
+                    <h3>Puntualidad</h3>
+                    <p>Respetamos tu tiempo. Nuestro sistema garantiza que serás atendido a la hora exacta reservada.</p>
+                </div>
+                
+                <div class="beneficio-card">
+                    <div class="beneficio-icono">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+                    </div>
+                    <h3>Higiene Impecable</h3>
+                    <p>Estrictos protocolos de esterilización en todas nuestras herramientas e instalaciones.</p>
+                </div>
+            </div>
+        </section>
+           
+        </main>
+       
+        <!-- MODAL DEL CARRITO DE COMPRA -->
+        <div class="cart-modal-overlay" id="cartOverlay"></div>
+        <div class="cart-modal">
+            <div class="cart-modal-header">
+                <h3 style="display: flex; align-items: center; gap: 10px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-dorado)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    Tu Carrito
+                </h3>
+                
+                <button class="close-modal" id="closeModal" aria-label="Cerrar carrito">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="cart-modal-body" id="modalCartItems">
+                <div class="cart-empty">
+                    <p>Tu carrito está vacío.</p>
+                </div>
+            </div>
+
+            <div class="cart-modal-footer">
+                <div class="modal-total">
+                    <span>Total:</span>
+                    <span class="total-price" id="modalTotal">$0.00</span>
+                </div>
+                <a href="/Barberia app/Factura.html" class="btn-modal-checkout">Finalizar Compra</a>
+            </div>
+        </div>
+
+        <footer>
+            <img src="/Barberia app/assets/Imagenes/logo-blanco.png" alt="Logo Barbería Alura">
+            <p class="copyright">© Copyright Barbería - 2026</p>
+        </footer>
+
+        <script src="/Barberia app/assets/JS/carrito.js"></script>
+    </body>
+</html>
