@@ -1,0 +1,100 @@
+/* ===== DISEÑO DEL CHECKOUT (PÁGINA DE FACTURA) ===== */
+.main-checkout {
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    padding: 0 20px;
+}
+
+.checkout-grid {
+    display: grid;
+    grid-template-columns: 460px 1fr; 
+    gap: 40px;
+    align-items: start;
+}
+
+.checkout-subtitle {
+    font-family: var(--fuente-titulos);
+    color: var(--color-texto-principal);
+    font-size: 1.4rem;
+    margin-bottom: 25px;
+    border-bottom: 2px solid var(--color-dorado);
+    padding-bottom: 10px;
+}
+
+.checkout-form-container, .checkout-summary {
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    border: 1px solid #eaeaea;
+}
+
+/* ===== ATAJO DE REGRESO ===== */
+.atajo-volver {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-dorado);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.05rem;
+    transition: transform 0.3s ease;
+}
+
+.atajo-volver:hover {
+    transform: translateX(-5px);
+    color: var(--color-dorado-oscuro);
+}
+
+/* Estilos para la tabla de productos en la factura */
+.factura-tabla {
+    width: 100%; 
+    border-collapse: collapse;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+}
+
+.factura-tabla th {
+    background-color: #333;
+    color: white;
+    padding: 12px 10px;
+    text-align: center; 
+    font-weight: 600;
+}
+
+.factura-tabla td {
+    padding: 15px 10px;
+    border-bottom: 1px solid #eee;
+    text-align: center; 
+    vertical-align: middle;
+    color: #444;
+}
+
+.factura-tabla th:first-child,
+.factura-tabla td:first-child {
+    text-align: left; 
+}
+.factura-total-caja {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 2px solid var(--color-dorado);
+}
+
+.total-numero {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color-dorado);
+}
+
+@media print {
+    .no-print { display: none !important; }
+    .checkout-grid { display: block; }
+    .checkout-summary { box-shadow: none; border: none; padding: 0; }
+}
+
+@media (max-width: 900px) {
+    .checkout-grid { grid-template-columns: 1fr; }
+}
