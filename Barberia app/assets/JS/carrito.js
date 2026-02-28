@@ -287,3 +287,5 @@ window.eliminarProducto = function (index) {
 document.addEventListener("carritoActualizado", () => {
   location.reload();
 });
+
+

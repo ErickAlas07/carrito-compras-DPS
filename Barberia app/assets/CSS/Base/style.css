@@ -175,7 +175,7 @@ header img {
     color: var(--color-dorado);
 }
 
-.btn-icon-cart {
+.btn-admin-icon {
     background: transparent;
     border: none;
     cursor: pointer;
@@ -184,7 +184,7 @@ header img {
     justify-content: center;
 }
 
-.btn-icon-cart:hover {
+.btn-admin-icon:hover {
     transform: scale(1.1);
 }
 
