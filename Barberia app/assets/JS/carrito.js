@@ -46,10 +46,19 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!contenedor) return;
 
     contenedor.innerHTML = "";
+    
+    const enIndex = !window.location.href.includes("Barberia");
 
     listaProductos.forEach((producto) => {
       let etiquetaStock = "";
       let btnDisabled = "";
+
+      // Ajuste de ruta de imagen según la página
+      let rutaImagen = producto.imagen; // Por defecto: "assets/Imagenes/..."
+      if (enIndex) {
+          // Si es en index.html, la ruta debe ser "Barberia app/assets/Imagenes/..."
+          rutaImagen = "Barberia app/" + producto.imagen;
+      }
 
       // Lógica visual del stock
       if (producto.tipo === "producto") {
@@ -64,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const tarjetaHtml = `
         <div class="product-card">
           <div class="card-image-container">
-            <img src="${producto.imagen}" alt="${producto.nombre}">
+            <img src="${rutaImagen}" alt="${producto.nombre}">
           </div>
           <div class="card-content">
             <h3 class="card-title">${producto.nombre}</h3>
