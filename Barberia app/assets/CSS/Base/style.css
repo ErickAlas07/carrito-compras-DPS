@@ -1,14 +1,15 @@
 /* ===== VARIABLES GLOBALES ===== */
 :root {
-    --color-primario: #c78c19;
-    --color-secundario: #333;
-    --color-fondo-header: rgba(187, 162, 21, 0.404);
-    --color-fondo-diferenciales: rgba(187, 162, 21, 0.404);
-    --color-texto-claro: #FFFFFF;
-    --color-texto-oscuro: #333;
-    --sombra-suave: 0 8px 25px rgba(0,0,0,0.1);
-    --borde-radio: 12px;
-    --transition-normal: 0.3s ease;
+    /* Paleta Dark Luxury */
+    --color-fondo-principal: #121212; 
+    --color-fondo-secundario: #1e1e1e;
+    --color-texto-principal: #f5f5f5; 
+    --color-texto-secundario: #a0a0a0;
+    --color-dorado: #D4AF37; 
+    --color-dorado-oscuro: #b4942b;
+    
+    --fuente-titulos: 'Cinzel', serif; 
+    --fuente-cuerpo: 'Montserrat', sans-serif;
 }
 
 /* ===== RESET Y BASE ===== */
@@ -19,11 +20,10 @@
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    line-height: 1.6;
-    overflow-x: hidden;
+    background-color: var(--color-fondo-principal);
+    color: var(--color-texto-principal);
+    font-family: var(--fuente-cuerpo);
 }
-
 img {
     max-width: 100%;
     height: auto;

@@ -21,78 +21,143 @@
         </div>
     </header>
 
-    <main>
-        <h2 class="titulo-principal">Nuestros Productos</h2>
+    <main "main-productos">
+        <section class="productos-header-section">
+            <h2 class="titulo-principal">Nuestros Servicios & Productos</h2>
+            <p class="subtitulo">"Elegancia y cuidado para el cabello"</p>
+        </section>
         
-        <ul class="productos">
-            <!-- Producto 1: Corte de Cabello -->
-            <li>
-                <h2>Corte de Cabello</h2>
-                <img src="assets/Imagenes/cabello.jpg" alt="Corte de cabello profesional">
-                <p class="producto-descripcion">Corte profesional con tijera o máquina, a gusto del cliente. Incluye lavado y peinado.</p>
-                <p class="producto-precio">$10.00</p>
-                <p class="producto-stock">Stock: 15 disponibles</p>
-                <input type="number" class="producto-cantidad" min="1" max="15" value="1">
-                <button class="btn-agregar">Agregar al Carrito</button>
-            </li>
-            
-            <!-- Producto 2: Corte de Barba -->
-            <li>
-                <h2>Corte de Barba</h2>
-                <img src="assets/Imagenes/barba.jpg" alt="Corte de barba profesional">
-                <p class="producto-descripcion">Corte y diseño profesional de barba. Incluye perfilado, acabados y toalla caliente.</p>
-                <p class="producto-precio">$8.00</p>
-                <p class="producto-stock">Stock: 12 disponibles</p>
-                <input type="number" class="producto-cantidad" min="1" max="12" value="1">
-                <button class="btn-agregar">Agregar al Carrito</button>
-            </li>
-            
-            <!-- Producto 3: Paquete Completo -->
-            <li>
-                <h2>Paquete Completo</h2>
-                <img src="assets/Imagenes/cabello+barba.jpg" alt="Paquete completo de cabello y barba">
-                <p class="producto-descripcion">Paquete completo de cabello y barba. Incluye corte, lavado, peinado y perfilado de barba.</p>
-                <p class="producto-precio">$15.00</p>
-                <p class="producto-stock">Stock: 10 disponibles</p>
-                <input type="number" class="producto-cantidad" min="1" max="10" value="1">
-                <button class="btn-agregar">Agregar al Carrito</button>
-            </li>
-            
-            <!-- Producto 4: Shampoo Profesional (NUEVO) -->
-            <li>
-                <h2>Shampoo Profesional</h2>
-                <img src="assets/Imagenes/shampoo.jpg" alt="Shampoo profesional para cabello">
-                <p class="producto-descripcion">Shampoo profesional para todo tipo de cabello. Fórmula con biotina, vitaminas y keratina.</p>
-                <p class="producto-precio">$12.00</p>
-                <p class="producto-stock">Stock: 20 disponibles</p>
-                <input type="number" class="producto-cantidad" min="1" max="20" value="1">
-                <button class="btn-agregar">Agregar al Carrito</button>
-            </li>
-            
-            <!-- Producto 5: Acondicionador (NUEVO) -->
-            <li>
-                <h2>Acondicionador</h2>
-                <img src="assets/Imagenes/acondicionador.jpg" alt="Acondicionador hidratante">
-                <p class="producto-descripcion">Acondicionador hidratante con keratina y aceites naturales. Deja el cabello suave y manejable.</p>
-                <p class="producto-precio">$12.00</p>
-                <p class="producto-stock">Stock: 18 disponibles</p>
-                <input type="number" class="producto-cantidad" min="1" max="18" value="1">
-                <button class="btn-agregar">Agregar al Carrito</button>
-            </li>
-            
-            <!-- Producto 6: Aceite Premium (NUEVO) -->
-            <li>
-                <h2>Aceite Premium</h2>
-                <img src="assets/Imagenes/aceite.jpg" alt="Aceite para barba y cabello">
-                <p class="producto-descripcion">Aceite multiusos para barba y cabello. Con argán, jojoba y vitaminas. Hidratación profunda.</p>
-                <p class="producto-precio">$15.00</p>
-                <p class="producto-stock">Stock: 15 disponibles</p>
-                <input type="number" class="producto-cantidad" min="1" max="15" value="1">
-                <button class="btn-agregar">Agregar al Carrito</button>
-            </li>
-        </ul>
+        <div class="productos-grid">
+            <div class="product-card">
+                <div class="card-img-container">
+                    <img src="assets/Imagenes/cabello.jpg" alt="Corte de cabello profesional">
+                    <div class="card-overlay"></div>
+                    <!-- <button class="btn-add-to-cart">Añadir al carro</button> -->
+                </div>
+
+                <div class="card-content">
+                    <h3 class="card-title">Corte de Cabello</h3>
+                    <p class="card-description">Corte profesional con tijera o máquina, a gusto del cliente. Incluye lavado y peinado.</p>
+                    <div class="card-footer flex-container">
+                        <span class="card-price">$10.00</span>
+                        <button class="btn-icon-cart" aria-label="Añadir al carrito">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-image-container">
+                    <img src="assets/Imagenes/barba.jpg" alt="Corte de Barba">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Diseño de Barba</h3>
+                    <p class="card-description">Perfilado profesional y tratamiento con toalla caliente.</p>
+                    <div class="card-footer flex-container">
+                        <span class="card-price">$8.00</span>
+                        <button class="btn-icon-cart" aria-label="Añadir al carrito">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-image-container">
+                    <img src="assets/Imagenes/cabello+barba.jpg" alt="Corte de Cabello y Barba">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Paquete Completo</h3>
+                    <p class="card-description">Paquete completo de cabello y barba. Incluye corte, lavado, peinado y perfilado de barba.</p>
+                    <div class="card-footer flex-container">
+                        <span class="card-price">$15.00</span>
+                        <button class="btn-icon-cart" aria-label="Añadir al carrito">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-image-container">
+                    <img src="assets/Imagenes/shampoo.jpg" alt="Shampoo profesional para cabello">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Shampoo Profesional</h3>
+                    <p class="card-description">Shampoo profesional para todo tipo de cabello. Fórmula con biotina, vitaminas y keratina.</p>
+                    <div class="card-footer flex-container">
+                        <span class="card-price">$12.00</span>
+                        <p class="producto-stock">Stock: 20 disponibles</p>
+                        <button class="btn-icon-cart" aria-label="Añadir al carrito">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-image-container">
+                    <img src="assets/Imagenes/acondicionador.jpg" alt="Acondicionador hidratante">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Acondicionador Hidratante</h3>
+                    <p class="card-description">Acondicionador hidratante con keratina y aceites naturales. Deja el cabello suave y manejable.</p>
+                    <div class="card-footer flex-container">
+                        <span class="card-price">$12.00</span>
+                        <p class="producto-stock">Stock: 18 disponibles</p>
+                        <button class="btn-icon-cart" aria-label="Añadir al carrito">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-image-container">
+                    <img src="assets/Imagenes/aceite.jpg" alt="Aceite para barba y cabello">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Aceite Premium</h3>
+                    <p class="card-description">Aceite multiusos para barba y cabello. Con argán, jojoba y vitaminas. Hidratación profunda.</p>
+                    <div class="card-footer flex-container">
+                        <span class="card-price">$15.00</span>
+                        <p class="producto-stock">Stock: 15 disponibles</p>
+                        <button class="btn-icon-cart" aria-label="Añadir al carrito">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </main>
 
+    <!-- Sección del pie de página -->
     <footer>
         <img src="assets/Imagenes/logo-blanco.png" alt="Logo Barbería Alura">
         <p class="copyright">&copy Copyright Barbería Alura - 2020</p>
