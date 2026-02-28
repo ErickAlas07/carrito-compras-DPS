@@ -167,11 +167,36 @@
         </div>
     </main>
 
+    <!-- MODAL DEL CARRITO DE COMPRA -->
+    <div class="cart-modal-overlay" id="cartOverlay"></div>
+    
+    <div class="cart-modal">
+        <div class="cart-modal-header">
+            <h3>Tu Carrito</h3>
+            <button class="close-modal" id="closeModal">X</button>
+        </div>
+        
+        <div class="cart-modal-body" id="modalCartItems">
+            <div class="cart-empty">
+                <p>Tu carrito está vacío.</p>
+            </div>
+        </div>
+
+        <div class="cart-modal-footer">
+            <div class="modal-total">
+                <span>Total:</span>
+                <span class="total-price" id="modalTotal">$0.00</span>
+            </div>
+            <a href="Carrito.html" class="btn-modal-checkout">Ver Carrito</a>
+        </div>
+    </div>
+
     <!-- Sección del pie de página -->
     <footer>
         <img src="assets/Imagenes/logo-blanco.png" alt="Logo Barbería Alura">
-        <p class="copyright">&copy Copyright Barbería Alura - 2020</p>
+        <p class="copyright">© Copyright Barbería - 2026</p>
     </footer>
+
     <script src="assets/JS/carrito.js"></script>
 </body>
 </html>
