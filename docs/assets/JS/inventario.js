@@ -48,6 +48,10 @@ document.addEventListener("DOMContentLoaded", function() {
         localStorage.setItem("inventario", JSON.stringify(inventario));
     }
     
+    function obtenerInventario() {
+            return JSON.parse(localStorage.getItem("inventario")) || [];
+        }
+
     function guardarInventario(inventario) {
         localStorage.setItem("inventario", JSON.stringify(inventario));
         renderizarTabla();
