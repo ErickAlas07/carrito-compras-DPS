@@ -54,6 +54,7 @@
     box-shadow: 0 8px 25px rgba(0,0,0,0.4); 
     transform: translateY(-5px);
     border-color: var(--color-dorado);
+    background-color: var(--color-fondo-principal);
 }
 
 /* === CONTENEDOR DE LA IMAGEN === */
@@ -62,7 +63,7 @@
     position: relative;
     padding: 20px;
     text-align: center;
-    background-color: #2a2a2a; 
+    background-color: transparent; 
     height: 250px; 
     display: flex;
     align-items: center;

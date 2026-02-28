@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const cartIcon = document.getElementById("cartIcon");
   const cartModal = document.querySelector(".cart-modal");
   const cartOverlay = document.getElementById("cartOverlay");
-  const closeModal = document.getElementById("close-modal");
+  const closeModal = document.getElementById("closeModal");
 
   // Lógica para abrir y cerrar el modal
   function toggleModal() {
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Guardado en localstorage
       localStorage.setItem("carrito", JSON.stringify(carrito));
 
-      alert("Producto agregado al carrito 🛒");
+    //   alert("Producto agregado al carrito 🛒");
 
       actualizarCarritoScreen();
 
@@ -168,4 +168,18 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+});
+
+window.eliminarProducto = function (index) {
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    carrito.splice(index, 1);
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+
+    document.dispatchEvent(new Event("carritoActualizado"));
+}
+
+// Escuchar el evento personalizado para actualizar la interfaz del carrito
+document.addEventListener('carritoActualizado', () => {
+    
+    location.reload(); 
 });
