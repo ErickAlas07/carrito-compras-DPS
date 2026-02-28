@@ -433,7 +433,7 @@ td, th {
     flex: 1 1 400px;
     list-style: none;
     padding: 0;
-    color: white;
+    color: #333;
     font-size: clamp(16px, 3vw, 18px);
 }
 
