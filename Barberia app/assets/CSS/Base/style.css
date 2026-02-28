@@ -131,6 +131,64 @@ header img {
     align-items: center;
 }
 
+/* Estilos para el dropdown del admin */
+.admin-menu-container{
+    position: relative;
+    margin-right: -95px;
+}
+
+.admin-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 10px;
+    background-color: var(--color-fondo-principal);
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    min-width: 180px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 200;
+}
+
+.admin-dropdown.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.admin-dropdown a {
+    display: block;
+    padding: 12px 15px;
+    color: var(--color-texto-principal);
+    text-decoration: none;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.2s;
+}
+
+.admin-dropdown a:hover {
+    background-color: var(--color-fondo-secundario);
+    color: var(--color-dorado);
+}
+
+.btn-icon-cart {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-icon-cart:hover {
+    transform: scale(1.1);
+}
+
+/* Estilos para el ícono del carrito en el header */
 .cart-icon-container{
     position: relative;
     display: flex;
