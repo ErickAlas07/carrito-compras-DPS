@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Cambiamos el estado del botón para que no le dé doble clic
             btnConfirmar.disabled = true;
-            btnConfirmar.innerHTML = "⏳ Generando Factura...";
+            btnConfirmar.innerHTML = "Generando Factura...";
 
             // 2. Descontar del inventario
             let inventario = JSON.parse(localStorage.getItem("inventario")) || [];
@@ -144,7 +144,6 @@ document.addEventListener("DOMContentLoaded", function () {
             const nombre = document.getElementById("clienteNombre").value;
             alert(`¡Gracias por tu compra, ${nombre}!\n\nTu pedido ha sido procesado y tu factura se está descargando.`);
             
-            // Le damos un pequeño respiro de medio segundo para que el PDF descargue bien antes de saltar de página
             setTimeout(() => {
                 window.location.href = "productos.html";
             }, 800);
