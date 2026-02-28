@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito - Barbería Alura</title>
+    <link rel="stylesheet" href="assets/CSS/Base/reset.css">
+    <link rel="stylesheet" href="assets/CSS/Base/carrito.css">
+
+</head>
+<body>
+    <header>
+        <div class="caja">
+            <h1><img src="assets/Imagenes/logo.png" alt="Logo de la Barbería Alura"></h1>
+            <button class="menu-toggle" aria-label="Menú">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="carrito.html">Carrito</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="carrito-main">
+        <section class="carrito-header">
+            <h2 class="titulo-principal">Carrito de Compras</h2>
+            <p class="carrito-subtitulo">Revisa tus productos antes de finalizar</p>
+        </section>
+
+        <!-- Carrito vacío -->
+        <section class="carrito-vacio" id="carritoVacio">
+            <div class="carrito-vacio-contenido">
+                <img src="assets/Imagenes/carrito-vacio.png" alt="Carrito vacío" class="carrito-vacio-imagen">
+                <h3>Tu carrito está vacío</h3>
+                <p>Agrega productos para comenzar tu compra</p>
+                <a href="productos.html" class="btn-ver-productos">Ver Productos</a>
+            </div>
+        </section>
+
+        <!-- Carrito con productos -->
+        <section class="carrito-con-productos" id="carritoConProductos" style="display: none;">
+            <div class="carrito-grid">
+                <!-- Lista de productos -->
+                <div class="carrito-productos">
+                    <table class="carrito-tabla">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Precio</th>
+                                <th>Cantidad</th>
+                                <th>Subtotal</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="carrito-lista">
+                            <!-- Los productos se agregarán aquí dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Resumen de compra -->
+                    
+
+                    <button class="btn-finalizar-compra">Finalizar Compra</button>
+                    <a href="Factura.html" class="btn-seguir-comprando">← Seguir comprando</a>
+                
+                <!--Finalizar compra -->
+                    
+                    <div class="carrito-total">
+                        <h3>Total: $<span id="total-general">0.00</span></h3>
+                    </div>
+
+                <!--Vaciar carrito -->
+
+                    <button class="btn-vaciar-carrito">Vaciar carrito</button>
+                </div>
+            </div>
+
+                       
+        </section>
+    </main>
+
+    <footer>
+        <img src="assets/Imagenes/logo-blanco.png" alt="Logo de la Barbería Alura">
+        <p class="copyright">&copy Copyright Barbería Alura - 2020</p>
+    </footer>
+
+    <!-- Archivos JavaScript -->
+    <script src="assets/JS/menu.js"></script>
+    <script src="assets/JS/carrito.js"></script>
+</body>
+</html>

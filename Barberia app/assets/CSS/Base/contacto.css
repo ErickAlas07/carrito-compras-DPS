@@ -1,0 +1,107 @@
+/* ===== PÁGINA DE CONTACTO ===== */
+.main-contacto {
+    max-width: 1200px;
+    margin: 40px auto 80px;
+    padding: 0 20px;
+}
+
+.contacto-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 40px;
+    align-items: start;
+}
+
+/* Cajas blancas */
+.contacto-info, .contacto-formulario {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+    border: 1px solid #eaeaea;
+}
+
+/* Títulos de las cajas */
+.contacto-info h3, .contacto-formulario h3 {
+    font-family: var(--fuente-titulos);
+    color: var(--color-dorado);
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+/* Info Izquierda */
+.contacto-info p {
+    color: var(--color-texto-secundario);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.contacto-info strong {
+    color: var(--color-texto-principal);
+}
+
+/* Caja de Horarios */
+.horarios-caja {
+    background-color: var(--color-fondo-secundario);
+    padding: 20px;
+    border-radius: 6px;
+    margin: 30px 0;
+}
+
+.horarios-caja h4 {
+    margin-bottom: 15px;
+    color: var(--color-texto-principal);
+}
+
+.horarios-caja ul {
+    list-style: none;
+    padding: 0;
+}
+
+.horarios-caja li {
+    display: flex;
+    justify-content: space-between; 
+    padding: 8px 0;
+    border-bottom: 1px dashed #dcdcdc;
+    color: var(--color-texto-secundario);
+    font-size: 0.95rem;
+}
+
+.horarios-caja li:last-child {
+    border-bottom: none;
+}
+
+/* Caja del Mapa */
+.mapa-caja {
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #dcdcdc;
+}
+
+/* ===== ALINEACIÓN DE ÍCONOS DE CONTACTO ===== */
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.info-item svg {
+    color: var(--color-dorado); 
+    flex-shrink: 0;
+}
+
+.info-item span {
+    color: var(--color-texto-secundario);
+    line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .contacto-grid {
+        grid-template-columns: 1fr;
+    }
+}
