@@ -24,11 +24,30 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // Leer inventario de LocalStorage
-    function obtenerInventario() {
-        return JSON.parse(localStorage.getItem("inventario")) || [];
+    // --- Carga de inventario por defecto ---
+    const inventarioDefault = [
+        { id: 1, nombre: "Corte de Cabello", descripcion: "Corte profesional con tijera o máquina.", precio: 10.0, imagen: "assets/Imagenes/cabello.jpg", tipo: "servicio", stock: null },
+        { id: 2, nombre: "Diseño de Barba", descripcion: "Perfilado profesional y tratamiento.", precio: 8.0, imagen: "assets/Imagenes/barba.jpg", tipo: "servicio", stock: null },
+        { id: 3, nombre: "Shampoo Profesional", descripcion: "Fórmula con biotina y keratina.", precio: 12.0, imagen: "assets/Imagenes/shampoo.jpg", tipo: "producto", stock: 20 },
+        { id: 4, nombre: "Aceite Premium", descripcion: "Aceite multiusos para barba y cabello.", precio: 15.0, imagen: "assets/Imagenes/aceite.jpg", tipo: "producto", stock: 15 },
+    ];
+
+    let inventario = [];
+
+    try {
+        const guardado = localStorage.getItem("inventario");
+        if (guardado) {
+            inventario = JSON.parse(guardado);
+        }
+    } catch (error) {
+        console.warn("La información del inventario en localStorage está vacío. Se cargará el inventario por defecto.");
     }
 
+    if (!inventario || !Array.isArray(inventario) || inventario.length === 0) {
+        inventario = inventarioDefault;
+        localStorage.setItem("inventario", JSON.stringify(inventario));
+    }
+    
     function guardarInventario(inventario) {
         localStorage.setItem("inventario", JSON.stringify(inventario));
         renderizarTabla();
