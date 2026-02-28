@@ -1,138 +1,153 @@
 document.addEventListener("DOMContentLoaded", function () {
-
     const contenedor = document.getElementById("factura-contenedor");
-    const btnImprimir = document.getElementById("btn-imprimir");
+    const btnConfirmar = document.getElementById("btn-confirmar");
+    const btnImprimirManual = document.getElementById("btn-imprimir"); // El botón secundario
+    const formCheckout = document.getElementById("formCheckout");
 
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
+    // Redirigir si no hay nada
     if (carrito.length === 0) {
-        contenedor.innerHTML = "<h2>No hay productos en el carrito.</h2>";
+        alert("Tu carrito está vacío. Serás redirigido a la tienda.");
+        window.location.href = "productos.html";
         return;
     }
 
     let totalGeneral = 0;
-    let ivaPorcentaje = 0.13; // 13% IVA incluido
+    let ivaPorcentaje = 0.13; // 13% IVA
 
+    // Dibujar la tabla en el HTML
     let html = `
-        <div class="factura-page">
-            <div class="factura-header">
-                <h2>Detalle de Factura - Barbería</h2>
-            </div>
-
-            <table class="factura-tabla">
-                <thead>
-                    <tr>
-                        <th>Producto</th>
-                        <th>Precio</th>
-                        <th>IVA</th>
-                        <th>Cantidad</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody>
+        <table class="factura-tabla">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cant.</th>
+                    <th>IVA</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
     `;
 
     carrito.forEach(producto => {
-
-        const subtotal = producto.precio * producto.cantidad; // Ya incluye IVA
-        const iva = subtotal - (subtotal / (1 + ivaPorcentaje)); // Extraer IVA incluido
-        const total = subtotal; // Total ya incluye IVA
-
-        totalGeneral += total;
+        const subtotal = producto.precio * producto.cantidad;
+        const iva = subtotal - (subtotal / (1 + ivaPorcentaje)); 
+        totalGeneral += subtotal; 
 
         html += `
             <tr>
-                <td>${producto.nombre}</td>
-                <td>$${producto.precio.toFixed(2)}</td>
-                <td>$${iva.toFixed(2)}</td>
+                <td><strong>${producto.nombre}</strong><br><small style="color:#666">$${producto.precio.toFixed(2)} c/u</small></td>
                 <td>${producto.cantidad}</td>
-                <td>$${total.toFixed(2)}</td>
+                <td>$${iva.toFixed(2)}</td>
+                <td><strong>$${subtotal.toFixed(2)}</strong></td>
             </tr>
         `;
     });
 
     html += `
-                </tbody>
-            </table>
-
-            <h3 style="text-align:right;">Total General: $${totalGeneral.toFixed(2)}</h3>
+            </tbody>
+        </table>
+        <div class="factura-total-caja">
+            <span style="font-size:1.2rem; font-weight:bold;">Total General:</span>
+            <span class="total-numero">$${totalGeneral.toFixed(2)}</span>
         </div>
     `;
 
     contenedor.innerHTML = html;
 
-    // Generar PDF al hacer clic en el botón
-    btnImprimir.addEventListener("click", function () {
-        // Crear PDF usando jsPDF
+    // --- FUNCIÓN PARA GENERAR EL PDF ---
+    function generarPDF() {
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF();
-
         const pageWidth = doc.internal.pageSize.getWidth();
 
         doc.setFontSize(18);
-        const titulo = "Detalle de Factura - Barbería";
+        const titulo = "Detalle de Factura - Barbería Alura";
         const textWidth = doc.getTextWidth(titulo);
-        const x = (pageWidth - textWidth) / 2;
-        doc.text(titulo, x, 20);
+        doc.text(titulo, (pageWidth - textWidth) / 2, 20);
 
         let filas = [];
         let totalFinal = 0;
 
         carrito.forEach(producto => {
-
             const subtotal = producto.precio * producto.cantidad;
             const iva = subtotal - (subtotal / (1 + ivaPorcentaje));
-            const total = subtotal;
-
-            totalFinal += total;
+            totalFinal += subtotal;
 
             filas.push([
                 producto.nombre,
                 "$" + producto.precio.toFixed(2),
                 "$" + iva.toFixed(2),
                 producto.cantidad,
-                "$" + total.toFixed(2)
+                "$" + subtotal.toFixed(2)
             ]);
         });
 
         doc.autoTable({
             head: [["Producto", "Precio", "IVA", "Cantidad", "Total"]],
             body: filas,
-            startY: 30
+            startY: 30,
+            headStyles: { fillColor: [199, 140, 25] } // Le puse un toque dorado al PDF
         });
 
-        // Agregar total al final de la tabla
         doc.setFontSize(14);
         const totalTexto = "Total General: $" + totalFinal.toFixed(2);
         const totalWidth = doc.getTextWidth(totalTexto);
         doc.text(totalTexto, pageWidth - totalWidth - 14, doc.lastAutoTable.finalY + 10);
 
         doc.save("factura_barberia.pdf");
+    }
 
-        localStorage.removeItem("carrito");
-        window.location.href = "productos.html";
-    });
+    // --- BOTÓN SECUNDARIO (Solo descargar PDF sin pagar) ---
+    if(btnImprimirManual) {
+        btnImprimirManual.addEventListener("click", function(e) {
+            e.preventDefault();
+            generarPDF();
+        });
+    }
 
-    // --- DESCONTAR DEL INVENTARIO ---
-    let inventario = JSON.parse(localStorage.getItem("inventario")) || [];
+    // --- BOTÓN PRINCIPAL: CONFIRMAR, DESCONTAR, IMPRIMIR Y REDIRIGIR ---
+    if(btnConfirmar) {
+        btnConfirmar.addEventListener("click", function (e) {
+            e.preventDefault();
 
-    // Recorrer el carrito para actualizar el inventario
-    carrito.forEach(itemCarrito => {
-        
-        // Buscar por id o por nombre para encontrar el producto en el inventario
-        let itemEnInventario = inventario.find(inv => inv.id == itemCarrito.id || inv.nombre === itemCarrito.nombre);
-                
-        if (itemEnInventario && itemEnInventario.tipo === "producto" && itemEnInventario.stock !== null) {
-            
-            itemEnInventario.stock -= itemCarrito.cantidad;
-            
-            // evitar que el stock sea negativo
-            if(itemEnInventario.stock < 0) {
-                itemEnInventario.stock = 0; 
+            // 1. Validar que llenó el formulario
+            if (!formCheckout.checkValidity()) {
+                formCheckout.reportValidity();
+                return;
             }
-        }
-    });
 
-    // Guardar el inventario actualizado en localStorage
-    localStorage.setItem("inventario", JSON.stringify(inventario));
+            // Cambiamos el estado del botón para que no le dé doble clic
+            btnConfirmar.disabled = true;
+            btnConfirmar.innerHTML = "⏳ Generando Factura...";
+
+            // 2. Descontar del inventario
+            let inventario = JSON.parse(localStorage.getItem("inventario")) || [];
+
+            carrito.forEach(itemCarrito => {
+                let itemEnInventario = inventario.find(inv => inv.id == itemCarrito.id || inv.nombre === itemCarrito.nombre);
+                if (itemEnInventario && itemEnInventario.tipo === "producto" && itemEnInventario.stock !== null) {
+                    itemEnInventario.stock -= itemCarrito.cantidad;
+                    if(itemEnInventario.stock < 0) itemEnInventario.stock = 0; 
+                }
+            });
+
+            localStorage.setItem("inventario", JSON.stringify(inventario));
+
+            // 3. Generar e Imprimir el PDF automáticamente
+            generarPDF();
+
+            // 4. Limpiar el carrito y Redirigir a la tienda
+            localStorage.removeItem("carrito");
+
+            const nombre = document.getElementById("clienteNombre").value;
+            alert(`¡Gracias por tu compra, ${nombre}!\n\nTu pedido ha sido procesado y tu factura se está descargando.`);
+            
+            // Le damos un pequeño respiro de medio segundo para que el PDF descargue bien antes de saltar de página
+            setTimeout(() => {
+                window.location.href = "productos.html";
+            }, 800);
+        });
+    }
 });

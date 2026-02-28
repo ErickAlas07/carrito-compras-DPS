@@ -420,28 +420,6 @@ select {
     background-color: white;
 }
 
-/* Tabla */
-table {
-    max-width: 600px;
-    width: 90%;
-    margin: 40px auto;
-    border-collapse: collapse;
-    overflow-x: auto;
-    display: block;
-}
-
-thead {
-    background: #555555;
-    color: white;
-    font-weight: bold;
-}
-
-td, th {
-    border: 1px solid #000000;
-    padding: 12px 20px;
-    text-align: center;
-}
-
 /* ===== PÁGINA HOME ===== */
 .hero {
     position: relative;
@@ -610,8 +588,8 @@ td, th {
     font-size: 1rem;
     box-shadow: none;
 }
-/* ===== SECCIÓN DIFERENCIALES PREMIUM (HOME) ===== */
-.diferenciales-premium {
+/* ===== SECCIÓN DIFERENCIALES (HOME) ===== */
+.diferenciales {
     padding: 100px 20px;
     background-color: var(--color-fondo-principal);
     max-width: 1200px;
@@ -620,7 +598,6 @@ td, th {
 
 .diferenciales-grid {
     display: grid;
-    /* Esto hace que las cajas se adapten solas: 3 por fila en PC, 2 en Tablet, 1 en Celular */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
 }
@@ -635,7 +612,7 @@ td, th {
 }
 
 .beneficio-card:hover {
-    transform: translateY(-10px); /* La tarjeta "flota" hacia arriba */
+    transform: translateY(-10px); 
     box-shadow: 0 15px 30px rgba(0,0,0,0.08);
     border-color: var(--color-dorado);
 }
@@ -646,14 +623,13 @@ td, th {
     justify-content: center;
     width: 70px;
     height: 70px;
-    background-color: rgba(199, 140, 25, 0.1); /* Fondo dorado transparente */
+    background-color: rgba(199, 140, 25, 0.1); 
     color: var(--color-dorado);
     border-radius: 50%;
     margin-bottom: 20px;
     transition: all 0.3s ease;
 }
 
-/* Al pasar el mouse por la tarjeta, el ícono se rellena de color */
 .beneficio-card:hover .beneficio-icono {
     background-color: var(--color-dorado);
     color: #fff;
@@ -673,28 +649,6 @@ td, th {
     font-size: 0.95rem;
     line-height: 1.6;
 }
-/* Diferenciales */
-/* .diferenciales {
-    padding: 4em 20px;
-    background: var(--color-fondo-diferenciales);
-}
-
-.contenido-diferenciales {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    align-items: center;
-}
-
-.lista-diferenciales {
-    flex: 1 1 400px;
-    list-style: none;
-    padding: 0;
-    color: #333;
-    font-size: clamp(16px, 3vw, 18px);
-} */
 
 .items {
     margin-bottom: 20px;
@@ -1075,7 +1029,7 @@ td, th {
     }
     
     .decoracion-marco {
-        left: 15px; /* Ajusta el cuadrito en móviles para que no se salga de la pantalla */
+        left: 15px; 
         top: 15px;
     }
 }
