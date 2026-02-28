@@ -416,64 +416,236 @@ td, th {
 /* ===== PÁGINA HOME ===== */
 .hero {
     position: relative;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("assets/Imagenes/banner.jpg");
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
-    padding: 6em 20px;
+    background-attachment: fixed; 
+    height: 85vh; 
+    min-height: 500px;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
     text-align: center;
+    padding: 0 20px;
 }
 
-.hero .principal {
-    background: transparent;
-    color: white;
+.hero-content {
     max-width: 800px;
-    margin: 0 auto;
+    animation: fadeIn 1s ease-out;
 }
 
-.principal {
-    padding: 3em 20px;
+.hero-title {
+    font-family: var(--fuente-titulos);
+    color: var(--color-dorado);
+    font-size: clamp(2.5rem, 5vw, 4.5rem); 
+    line-height: 1.1;
+    margin-bottom: 20px;
+    text-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+}
+
+.hero-subtitle1 {
+    font-family: var(--fuente-cuerpo);
+    color: var(--color-fondo-secundario);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    margin-bottom: 40px;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.hero-subtitle {
+    font-family: var(--fuente-cuerpo);
+    color: var(--color-texto-principal);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    margin-bottom: 40px;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.btn-cta-hero {
+    display: inline-block;
+    background-color: var(--color-dorado);
+    color: #fff; 
+    text-decoration: none;
+    font-family: var(--fuente-cuerpo);
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 18px 40px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.btn-cta-hero:hover {
+    background-color: var(--color-dorado-oscuro);
+    transform: translateY(-3px);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Sección Sobre Nosotros */
+.sobre-nosotros {
+    padding: 100px 20px;
+    background: var(--color-fondo-principal);
+}
+
+.container-sobre-nosotros {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 80px; 
+    align-items: center; 
+}
+
+.sobre-imagen {
+    position: relative;
+}
+
+/* Imagen con efecto de profundidad */
+.sobre-imagen img {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15); 
+    position: relative;
+    z-index: 2; 
+}
+
+/* Cuadro decorativo alrededor de la imagen */
+.decoracion-marco {
+    position: absolute;
+    top: 25px;
+    left: -25px;
+    width: 100%;
+    height: 100%;
+    border: 3px solid var(--color-dorado);
+    border-radius: 4px;
+    z-index: 1;
+}
+
+/* Textos */
+.sobre-texto {
+    text-align: left;
+}
+
+.titulo-seccion {
+    font-family: var(--fuente-titulos);
+    color: var(--color-texto-principal);
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+}
+
+.sobre-texto p {
+    color: var(--color-texto-secundario);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.sobre-texto strong {
+    color: var(--color-dorado);
+}
+
+/* Misión */
+.mision-destacada {
+    font-family: var(--fuente-titulos);
+    font-size: 1.4rem;
+    color: var(--color-texto-principal);
+    border-left: 4px solid var(--color-dorado); 
+    padding-left: 20px;
+    margin: 35px 0;
+    font-style: italic;
+    line-height: 1.4;
+}
+
+/* ===== SECCIÓN SERVICIOS DESTACADOS (HOME) ===== */
+.servicios-destacados {
+    padding: 80px 20px;
+    background-color: var(--color-fondo-secundario); 
+}
+
+.text-center {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.contenedor-btn-centrado {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.btn-secundario {
+    padding: 12px 30px;
+    font-size: 1rem;
+    box-shadow: none;
+}
+/* ===== SECCIÓN DIFERENCIALES PREMIUM (HOME) ===== */
+.diferenciales-premium {
+    padding: 100px 20px;
+    background-color: var(--color-fondo-principal);
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.titulo-principal {
-    text-align: center;
-    font-size: clamp(24px, 6vw, 2.5em);
-    margin: 0 0 1em;
-    position: relative;
+.diferenciales-grid {
+    display: grid;
+    /* Esto hace que las cajas se adapten solas: 3 por fila en PC, 2 en Tablet, 1 en Celular */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
 }
 
-.titulo-principal::after {
-    content: "";
-    display: block;
-    width: 100px;
-    height: 3px;
-    background-color: var(--color-primario);
-    margin: 15px auto 0;
-}
-
-.principal p {
-    margin: 0 0 1.5em;
-    font-size: clamp(14px, 2.5vw, 16px);
-    line-height: 1.8;
-}
-
-.principal strong {
-    font-weight: bold;
-    color: var(--color-primario);
-}
-
-.utensilios {
-    max-width: 120px;
-    float: left;
-    margin: 0 20px 20px 0;
+.beneficio-card {
+    background-color: var(--color-fondo-secundario);
+    padding: 40px 30px;
     border-radius: 8px;
-    box-shadow: var(--sombra-suave);
+    text-align: center;
+    border: 1px solid #eaeaea;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
+.beneficio-card:hover {
+    transform: translateY(-10px); /* La tarjeta "flota" hacia arriba */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+    border-color: var(--color-dorado);
+}
+
+.beneficio-icono {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    background-color: rgba(199, 140, 25, 0.1); /* Fondo dorado transparente */
+    color: var(--color-dorado);
+    border-radius: 50%;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+/* Al pasar el mouse por la tarjeta, el ícono se rellena de color */
+.beneficio-card:hover .beneficio-icono {
+    background-color: var(--color-dorado);
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.beneficio-card h3 {
+    font-family: var(--fuente-titulos);
+    font-size: 1.2rem;
+    color: var(--color-texto-principal);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.beneficio-card p {
+    color: var(--color-texto-secundario);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
 /* Diferenciales */
-.diferenciales {
+/* .diferenciales {
     padding: 4em 20px;
     background: var(--color-fondo-diferenciales);
 }
@@ -493,7 +665,7 @@ td, th {
     padding: 0;
     color: #333;
     font-size: clamp(16px, 3vw, 18px);
-}
+} */
 
 .items {
     margin-bottom: 20px;
@@ -865,4 +1037,16 @@ td, th {
 
 .hidden {
     display: none;
+}
+
+@media (max-width: 900px) {
+    .sobre-container {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    
+    .decoracion-marco {
+        left: 15px; /* Ajusta el cuadrito en móviles para que no se salga de la pantalla */
+        top: 15px;
+    }
 }

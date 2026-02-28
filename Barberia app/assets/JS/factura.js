@@ -113,4 +113,26 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = "productos.html";
     });
 
+    // --- DESCONTAR DEL INVENTARIO ---
+    let inventario = JSON.parse(localStorage.getItem("inventario")) || [];
+
+    // Recorrer el carrito para actualizar el inventario
+    carrito.forEach(itemCarrito => {
+        
+        // Buscar por id o por nombre para encontrar el producto en el inventario
+        let itemEnInventario = inventario.find(inv => inv.id == itemCarrito.id || inv.nombre === itemCarrito.nombre);
+                
+        if (itemEnInventario && itemEnInventario.tipo === "producto" && itemEnInventario.stock !== null) {
+            
+            itemEnInventario.stock -= itemCarrito.cantidad;
+            
+            // evitar que el stock sea negativo
+            if(itemEnInventario.stock < 0) {
+                itemEnInventario.stock = 0; 
+            }
+        }
+    });
+
+    // Guardar el inventario actualizado en localStorage
+    localStorage.setItem("inventario", JSON.stringify(inventario));
 });
