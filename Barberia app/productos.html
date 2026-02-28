@@ -9,16 +9,25 @@
     
 </head>
 <body>
-    <header>
-        <div class="caja">
-            <h1><img src="assets/Imagenes/logo.png" alt="Logo Barbería Alura"></h1>
-            <nav>
+    <header class="header">
+        <div class="caja-header">
+            <div class="logo-container">
+                <h1><img src="assets/Imagenes/logo.png" alt="Logo Barbería" class="logo-img"></h1>
+            </div>
+            
+            <nav class="nav-main">
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="productos.html">Productos</a></li>
-                    <li><a href="carrito.html">Carrito</a></li>
                 </ul>
             </nav>
+
+            <div class="actions">
+                <a href="#" id="cartIcon" class="cart-icon-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-bag"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                    <span class="cart-badge" id="cartCount">0</span>
+                </a>
+            </div>
         </div>
     </header>
 

@@ -1,84 +1,22 @@
-/* ===== RESET BÁSICO ===== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Montserrat', sans-serif;
-    background: #ffffff;
-    line-height: 1.6;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* ===== HEADER ===== */
-header {
-    background-color: rgba(187, 162, 21, 0.404);
-    backdrop-filter: blur(10px);
-    padding: 10px 20px;
-    width: 100%;
-}
-
-header img {
-    width: 60px;
-}
-
-.caja {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-}
-
-nav {
-    width: 100%;
-}
-
-nav ul {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    list-style: none;
-    padding: 10px 0;
-}
-
-nav li {
-    margin: 0;
-}
-
-nav a {
-    text-transform: uppercase;
-    font-size: 14px;
-    font-weight: 600;
-    text-decoration: none;
-    color: #333;
-    padding: 8px 16px;
-    border-radius: 25px;
-    transition: 0.3s ease;
-    display: inline-block;
-}
-
-nav a:hover {
-    color: #c78c19;
-    background: rgba(255,255,255,0.2);
-}
-
 /* ===== TÍTULO PRINCIPAL ===== */
+.productos-header-section{
+    padding: 50px 20px 0px;
+}
+
 .titulo-principal, .subtitulo {
     text-align: center;
     font-size: 2em;
-    margin: 40px 20px;
-    color: #333;
+    margin: 30px 10px;
+    color: var(--color-dorado);
     position: relative;
+    font-family: var(--fuente-titulos);
+}
+
+.subtitulo {
+    font-size: 1.1rem;
+    color: var(--color-texto-secundario);
+    margin-top: 10px;
+    font-style: italic;
 }
 
 .titulo-principal::after {
@@ -86,7 +24,7 @@ nav a:hover {
     display: block;
     width: 100px;
     height: 3px;
-    background: #c78c19;
+    background: var(--color-dorado);
     margin: 15px auto 0;
 }
 
@@ -94,26 +32,28 @@ nav a:hover {
 .productos-grid {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 40px 20px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 30px;
+    gap: 40px;
 }
 
 /* ===== TARJETA DE PRODUCTO ===== */
 .product-card {
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0;
+    background-color: var(--color-fondo-secundario);
+    border: 1px solid #333;
     border-radius: 8px;
     overflow: hidden; 
-    transition: box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
     display: flex;
     flex-direction: column;
-    position: relative; 
+    position: relative;
 }
 
 .product-card:hover {
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15); 
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4); 
+    transform: translateY(-5px);
+    border-color: var(--color-dorado);
 }
 
 /* === CONTENEDOR DE LA IMAGEN === */
@@ -122,7 +62,7 @@ nav a:hover {
     position: relative;
     padding: 20px;
     text-align: center;
-    background-color: #f9f9f9; 
+    background-color: #2a2a2a; 
     height: 250px; 
     display: flex;
     align-items: center;
@@ -143,22 +83,23 @@ nav a:hover {
     transform: scale(1.05); 
 }
 
-/* === CONTENIDO DE LA TARJETA (Texto) === */
+/* === CONTENIDO DE LA TARJETA === */
 .card-content {
     padding: 20px;
     display: flex;
     flex-direction: column;
     flex-grow: 1; 
-    background: white;
+    background: var(--color-fondo-secundario);
     z-index: 2; 
 }
 
 .card-title {
-    font-size: 1.1rem;
-    color: #333;
-    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: var(--color-texto-secundario);
+    margin-bottom: 15px;
+    line-height: 1.4;
+    flex-grow: 1;
     text-transform: uppercase;
-    font-weight: 700;
 }
 
 .card-description {
@@ -174,7 +115,7 @@ nav a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center; 
-    border-top: 1px solid #eee;
+    border-top: 1px solid #333;
     padding-top: 15px;
     margin-top: auto;
 }
@@ -182,11 +123,11 @@ nav a:hover {
 .card-price {
     font-size: 1.3rem;
     font-weight: bold;
-    color: #c78c19; 
+    color: var(--color-dorado);
 }
 
 /* === EL BOTÓN QUE SE DESLIZA === */
-.btn-add-to-cart {
+/* .btn-add-to-cart {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -203,14 +144,14 @@ nav a:hover {
     opacity: 0;
     transform: translateY(100%);
     transition: all 0.3s ease-in-out;
-}
+} */
 
 /* === ESTILOS PARA ÍCONO DE CARRITO === */
 .btn-icon-cart {
     background: none;
     border: none;
     cursor: pointer;
-    color: #c78c19; 
+    color: var(--color-dorado); 
     padding: 8px; 
     border-radius: 50%;
     display: flex;
@@ -225,16 +166,15 @@ nav a:hover {
 }
 
 .btn-icon-cart:hover {
-    background-color: rgba(199, 140, 25, 0.1);
-    color: #a67312; 
+    background-color: rgba(212, 175, 55, 0.1); /* Dorado con opacidad */
     transform: scale(1.1);
 }
 
-.product-card:hover .btn-add-to-cart {
+/* .product-card:hover .btn-add-to-cart {
     opacity: 1;
     transform: translateY(0);
 }
 
 .btn-add-to-cart:hover {
     background-color: #a67312; 
-}
+} */
