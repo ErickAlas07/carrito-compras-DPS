@@ -11,69 +11,106 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     let totalGeneral = 0;
+    let ivaPorcentaje = 0.13; // 13% IVA incluido
 
     let html = `
-        <h2>Factura - Barbería Alura</h2>
-        <table border="1" width="100%" cellpadding="10">
-            <thead>
-                <tr>
-                    <th>Producto</th>
-                    <th>Precio</th>
-                    <th>Cantidad</th>
-                    <th>Subtotal</th>
-                </tr>
-            </thead>
-            <tbody>
+        <div class="factura-page">
+            <div class="factura-header">
+                <h2>Detalle de Factura - Barbería</h2>
+            </div>
+
+            <table class="factura-tabla">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>IVA</th>
+                        <th>Cantidad</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
     `;
 
     carrito.forEach(producto => {
 
-        const subtotal = producto.precio * producto.cantidad;
-        totalGeneral += subtotal;
+        const subtotal = producto.precio * producto.cantidad; // Ya incluye IVA
+        const iva = subtotal - (subtotal / (1 + ivaPorcentaje)); // Extraer IVA incluido
+        const total = subtotal; // Total ya incluye IVA
+
+        totalGeneral += total;
 
         html += `
             <tr>
                 <td>${producto.nombre}</td>
                 <td>$${producto.precio.toFixed(2)}</td>
+                <td>$${iva.toFixed(2)}</td>
                 <td>${producto.cantidad}</td>
-                <td>$${subtotal.toFixed(2)}</td>
+                <td>$${total.toFixed(2)}</td>
             </tr>
         `;
     });
 
     html += `
-            </tbody>
-        </table>
-        <h3 style="text-align:right;">Total: $${totalGeneral.toFixed(2)}</h3>
+                </tbody>
+            </table>
+
+            <h3 style="text-align:right;">Total General: $${totalGeneral.toFixed(2)}</h3>
+        </div>
     `;
 
     contenedor.innerHTML = html;
 
-    // Generar factura en formato CSV al finalizar la compra
-
+    // Generar PDF al hacer clic en el botón
     btnImprimir.addEventListener("click", function () {
+        // Crear PDF usando jsPDF
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
 
-        let csv = "Producto,Precio,Cantidad,Subtotal\n";
+        const pageWidth = doc.internal.pageSize.getWidth();
+
+        doc.setFontSize(18);
+        const titulo = "Detalle de Factura - Barbería";
+        const textWidth = doc.getTextWidth(titulo);
+        const x = (pageWidth - textWidth) / 2;
+        doc.text(titulo, x, 20);
+
+        let filas = [];
+        let totalFinal = 0;
 
         carrito.forEach(producto => {
-            const subtotal = producto.precio * producto.cantidad;
 
-            csv += `${producto.nombre},${producto.precio.toFixed(2)},${producto.cantidad},${subtotal.toFixed(2)}\n`;
+            const subtotal = producto.precio * producto.cantidad;
+            const iva = subtotal - (subtotal / (1 + ivaPorcentaje));
+            const total = subtotal;
+
+            totalFinal += total;
+
+            filas.push([
+                producto.nombre,
+                "$" + producto.precio.toFixed(2),
+                "$" + iva.toFixed(2),
+                producto.cantidad,
+                "$" + total.toFixed(2)
+            ]);
         });
 
-        csv += `\nTotal General,,,${totalGeneral.toFixed(2)}`;
+        doc.autoTable({
+            head: [["Producto", "Precio", "IVA", "Cantidad", "Total"]],
+            body: filas,
+            startY: 30
+        });
 
-        const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
-        const url = URL.createObjectURL(blob);
+        // Agregar total al final de la tabla
+        doc.setFontSize(14);
+        const totalTexto = "Total General: $" + totalFinal.toFixed(2);
+        const totalWidth = doc.getTextWidth(totalTexto);
+        doc.text(totalTexto, pageWidth - totalWidth - 14, doc.lastAutoTable.finalY + 10);
 
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = "factura_barberia_alura.csv";
-        link.click();
+        doc.save("factura_barberia.pdf");
 
-        URL.revokeObjectURL(url);
-        localStorage.removeItem("carrito"); //Vacia el carrito al imprimir CSV
-        window.location.href = "productos.html"; //Redirige a Productos al imprimir la factura. 
+        localStorage.removeItem("carrito");
+        window.location.href = "productos.html";
     });
 
 });
