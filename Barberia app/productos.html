@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - Barbería Alura</title>
+    <link rel="stylesheet" href="assets/CSS/Base/productos.css">
+    <link rel="stylesheet" href="assets/CSS/Base/style.css">
+    
+</head>
+<body>
+    <header class="header">
+        <div class="caja-header">
+            <div class="logo-container">
+                <h1><img src="assets/Imagenes/logo.png" alt="Logo Barbería" class="logo-img"></h1>
+            </div>
+            
+            <nav class="nav-main">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="productos.html">Tienda</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <div class="actions">
+                <div class="admin-menu-container">
+                    <button class="btn-admin-icon" id="btnAdmin" aria-label="Administración">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                        </svg>
+                    </button>
+                    <div class="admin-dropdown" id="adminDropdown">
+                        <a href="inventario.html">Gestión de Inventario</a>
+                    </div>
+                </div>
+                
+                <a href="#" id="cartIcon" class="cart-icon-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-bag"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                    <span class="cart-badge" id="cartCount">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main "main-productos">
+        <section class="productos-header-section">
+            <h2 class="titulo-principal">Nuestros Servicios & Productos</h2>
+            <p class="subtitulo">"Elegancia y cuidado para el cabello"</p>
+        </section>
+        
+        <div class="productos-grid" id="productos-container">
+            <!-- <div class="product-card">
+                <div class="card-img-container">
+                    <img src="assets/Imagenes/cabello.jpg" alt="Corte de cabello profesional">
+                    <div class="card-overlay"></div>        
+                </div>
+
+                <div class="card-content">
+                    <h3 class="card-title">Corte de Cabello</h3>
+                    <p class="card-description">Corte profesional con tijera o máquina, a gusto del cliente. Incluye lavado y peinado.</p>
+                    <div class="card-footer flex-container">
+                        <span class="card-price">$10.00</span>
+                        <button class="btn-icon-cart" aria-label="Añadir al carrito">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-image-container">
+                    <img src="assets/Imagenes/barba.jpg" alt="Corte de Barba">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Diseño de Barba</h3>
+                    <p class="card-description">Perfilado profesional y tratamiento con toalla caliente.</p>
+                    <div class="card-footer flex-container">
+                        <span class="card-price">$8.00</span>
+                        <button class="btn-icon-cart" aria-label="Añadir al carrito">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-image-container">
+                    <img src="assets/Imagenes/cabello+barba.jpg" alt="Corte de Cabello y Barba">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Paquete Completo</h3>
+                    <p class="card-description">Paquete completo de cabello y barba. Incluye corte, lavado, peinado y perfilado de barba.</p>
+                    <div class="card-footer flex-container">
+                        <span class="card-price">$15.00</span>
+                        <button class="btn-icon-cart" aria-label="Añadir al carrito">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-image-container">
+                    <img src="assets/Imagenes/shampoo.jpg" alt="Shampoo profesional para cabello">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Shampoo Profesional</h3>
+                    <p class="card-description">Shampoo profesional para todo tipo de cabello. Fórmula con biotina, vitaminas y keratina.</p>
+                    <div class="card-footer flex-container">
+                        <span class="card-price">$12.00</span>
+                        <p class="producto-stock">Stock: 20 disponibles</p>
+                        <button class="btn-icon-cart" aria-label="Añadir al carrito">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-image-container">
+                    <img src="assets/Imagenes/acondicionador.jpg" alt="Acondicionador hidratante">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Acondicionador Hidratante</h3>
+                    <p class="card-description">Acondicionador hidratante con keratina y aceites naturales. Deja el cabello suave y manejable.</p>
+                    <div class="card-footer flex-container">
+                        <span class="card-price">$12.00</span>
+                        <p class="producto-stock">Stock: 18 disponibles</p>
+                        <button class="btn-icon-cart" aria-label="Añadir al carrito">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-image-container">
+                    <img src="assets/Imagenes/aceite.jpg" alt="Aceite para barba y cabello">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Aceite Premium</h3>
+                    <p class="card-description">Aceite multiusos para barba y cabello. Con argán, jojoba y vitaminas. Hidratación profunda.</p>
+                    <div class="card-footer flex-container">
+                        <span class="card-price">$15.00</span>
+                        <p class="producto-stock">Stock: 15 disponibles</p>
+                        <button class="btn-icon-cart" aria-label="Añadir al carrito">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div> -->
+
+        </div>
+    </main>
+
+    <!-- MODAL DEL CARRITO DE COMPRA -->
+    <div class="cart-modal-overlay" id="cartOverlay"></div>
+    
+    <div class="cart-modal">
+        <div class="cart-modal-header">
+            <h3 style="display: flex; align-items: center; gap: 10px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-dorado)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                Tu Carrito
+            </h3>
+            
+            <button class="close-modal" id="closeModal" aria-label="Cerrar carrito">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        
+        <div class="cart-modal-body" id="modalCartItems">
+            <div class="cart-empty">
+                <p>Tu carrito está vacío.</p>
+            </div>
+        </div>
+
+        <div class="cart-modal-footer">
+            <div class="modal-total">
+                <span>Total:</span>
+                <span class="total-price" id="modalTotal">$0.00</span>
+            </div>
+            <a href="Factura.html" class="btn-modal-checkout">Finalizar Compra</a>
+        </div>
+    </div>
+
+    <!-- Sección del pie de página -->
+    <footer>
+        <img src="assets/Imagenes/logo-blanco.png" alt="Logo Barbería Alura">
+        <p class="copyright">© Copyright Barbería - 2026</p>
+    </footer>
+
+    <script src="assets/JS/carrito.js"></script>
+</body>
+</html>

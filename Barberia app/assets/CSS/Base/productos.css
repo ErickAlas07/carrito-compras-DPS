@@ -1,0 +1,181 @@
+/* ===== TÍTULO PRINCIPAL ===== */
+.productos-header-section{
+    padding: 50px 20px 0px;
+}
+
+.titulo-principal, .subtitulo {
+    text-align: center;
+    font-size: 2em;
+    margin: 30px 10px;
+    color: var(--color-dorado);
+    position: relative;
+    font-family: var(--fuente-titulos);
+}
+
+.subtitulo {
+    font-size: 1.1rem;
+    color: var(--color-texto-secundario);
+    margin-top: 10px;
+    font-style: italic;
+}
+
+.titulo-principal::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: var(--color-dorado);
+    margin: 15px auto 0;
+}
+
+/* ===== GRID DE PRODUCTOS ===== */
+.productos-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+/* ===== TARJETA DE PRODUCTO ===== */
+.product-card {
+    background-color: var(--color-fondo-secundario);
+    border: 1px solid #333;
+    border-radius: 8px;
+    overflow: hidden; 
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.product-card:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4); 
+    transform: translateY(-5px);
+    border-color: var(--color-dorado);
+    background-color: var(--color-fondo-principal);
+}
+
+/* === CONTENEDOR DE LA IMAGEN === */
+.card-img-container, 
+.card-image-container { 
+    position: relative;
+    padding: 20px;
+    text-align: center;
+    background-color: transparent; 
+    height: 250px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.card-img-container img, 
+.card-image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+}
+
+/* Zoom suave a la imagen al hacer hover */
+.product-card:hover img {
+    transform: scale(1.05); 
+}
+
+/* === CONTENIDO DE LA TARJETA === */
+.card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+    background: var(--color-fondo-secundario);
+    z-index: 2; 
+}
+
+.card-title {
+    font-size: 0.9rem;
+    color: var(--color-texto-secundario);
+    margin-bottom: 15px;
+    line-height: 1.4;
+    flex-grow: 1;
+    text-transform: uppercase;
+}
+
+.card-description {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.4;
+    flex-grow: 1;
+}
+
+/* === FOOTER DE LA TARJETA === */
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    border-top: 1px solid #333;
+    padding-top: 15px;
+    margin-top: auto;
+}
+
+.card-price {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--color-dorado);
+}
+
+/* === EL BOTÓN QUE SE DESLIZA === */
+/* .btn-add-to-cart {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #c78c19;
+    color: white;
+    border: none;
+    padding: 15px 0;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all 0.3s ease-in-out;
+} */
+
+/* === ESTILOS PARA ÍCONO DE CARRITO === */
+.btn-icon-cart {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-dorado); 
+    padding: 8px; 
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.btn-icon-cart svg {
+    width: 24px;
+    height: 24px;
+}
+
+.btn-icon-cart:hover {
+    background-color: rgba(212, 175, 55, 0.1); /* Dorado con opacidad */
+    transform: scale(1.1);
+}
+
+/* .product-card:hover .btn-add-to-cart {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.btn-add-to-cart:hover {
+    background-color: #a67312; 
+} */

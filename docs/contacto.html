@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Barbería Alura</title>
+    
+    <link rel="stylesheet" href="assets/CSS/Base/reset.css">
+    <link rel="stylesheet" href="assets/CSS/Base/style.css">
+    <link rel="stylesheet" href="assets/CSS/Base/inventario.css"> <link rel="stylesheet" href="assets/CSS/Base/contacto.css"> </head>
+<body>
+    <header class="header">
+        <div class="caja-header">
+            <div class="logo-container">
+                <h1><img src="assets/Imagenes/logo.png" alt="Logo Barbería" class="logo-img"></h1>
+            </div>
+            
+            <nav class="nav-main">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="productos.html">Tienda</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <div class="actions">
+                <div class="admin-menu-container">
+                    <button class="btn-admin-icon" id="btnAdmin" aria-label="Administración">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                        </svg>
+                    </button>
+                    <div class="admin-dropdown" id="adminDropdown">
+                        <a href="inventario.html">Gestión de Inventario</a>
+                    </div>
+                </div>
+                
+                <a href="#" id="cartIcon" class="cart-icon-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-bag"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                    <span class="cart-badge" id="cartCount">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-contacto">
+        <section class="contacto-header-section text-center">
+            <h2 class="titulo-principal">¡Contáctanos!</h2>
+            <p class="hero-subtitle">Estamos aquí para ayudarte. Si tienes alguna pregunta o necesitas asistencia, no dudes en contactarnos.</p>
+        </section>
+
+        <div class="contactos-grid">
+            <section class="contacto-info">
+                <h3>Nuestra Barbería</h3>                
+                <p class="info-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <span><strong>Dirección:</strong> Universidad Don Bosco, San Salvador</span>
+                </p>
+
+                <p class="info-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                    <span><strong>Teléfono / WhatsApp:</strong> +503 7000-0000</span>
+                </p>
+
+                <p class="info-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    <span><strong>Correo:</strong> citas@barberiaalura.com</span>
+                </p>
+
+                <div class="horarios-caja">
+                    <h4>Horarios de Atención</h4>
+                    <ul>
+                        <li><span>Lunes a Viernes</span> <span>09:00 AM - 08:00 PM</span></li>
+                        <li><span>Sábados</span> <span>09:00 AM - 06:00 PM</span></li>
+                        <li><span>Domingos</span> <span style="color: #e74c3c;">Cerrado</span></li>
+                    </ul>
+                </div>
+
+                <div class="mapa-caja">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3603.513625449617!2d-89.15764832525134!3d13.715526386672556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f63374c2b61744d%3A0x12df83ce9a23ec96!2sUDB%20Virtual!5e1!3m2!1ses!2ssv!4v1772300329096!5m2!1ses!2ssv" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </section>
+
+            <section class="contacto-formulario">
+                <h3>Envíanos un Mensaje</h3>
+                <form id="formMensaje">
+                    <div class="form-group">
+                        <label for="nombreContacto">Nombre</label>
+                        <input type="text" id="nombreContacto" class="input-padron" placeholder="Tu nombre" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="emailContacto">Correo Electrónico</label>
+                            <input type="email" id="emailContacto" class="input-padron" placeholder="tu@correo.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telContacto">Teléfono</label>
+                            <input type="tel" id="telContacto" class="input-padron" placeholder="Tu número">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="asuntoContacto">Asunto</label>
+                        <select id="asuntoContacto" class="input-padron">
+                            <option value="reserva">Reservar una cita</option>
+                            <option value="duda">Duda sobre un producto</option>
+                            <option value="trabajo">Trabaja con nosotros</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mensajeContacto">Tu Mensaje</label>
+                        <textarea id="mensajeContacto" class="input-padron" rows="4" placeholder="¿En qué te podemos ayudar?" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-guardar" style="width: 100%; padding: 15px; font-size: 1.1rem;">Enviar Mensaje</button>
+                </form>
+            </section>
+
+        </div>
+    </main>
+
+    
+        <!-- MODAL DEL CARRITO DE COMPRA -->
+    <div class="cart-modal-overlay" id="cartOverlay"></div>
+    <div class="cart-modal">
+      <div class="cart-modal-header">
+        <h3 style="display: flex; align-items: center; gap: 10px">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="var(--color-dorado)"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path
+              d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+            ></path>
+          </svg>
+          Tu Carrito
+        </h3>
+
+        <button class="close-modal" id="closeModal" aria-label="Cerrar carrito">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-x"
+          >
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="cart-modal-body" id="modalCartItems">
+        <div class="cart-empty">
+          <p>Tu carrito está vacío.</p>
+        </div>
+      </div>
+
+      <div class="cart-modal-footer">
+        <div class="modal-total">
+          <span>Total:</span>
+          <span class="total-price" id="modalTotal">$0.00</span>
+        </div>
+        <a href="Factura.html" class="btn-modal-checkout">Finalizar Compra</a>
+      </div>
+    </div>
+
+    <!-- Sección de pie de página -->
+    <footer>
+        <img src="assets/Imagenes/logo-blanco.png" alt="Logo Barbería Alura">
+        <p class="copyright" style="color: #fff;">© Copyright Barbería - 2026</p>
+    </footer>
+
+    
+    <script src="assets/JS/carrito.js"></script>
+    <!-- Lógica para emular el envío -->
+    <script>
+        document.getElementById("formMensaje").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('button[type="submit"]');
+            btn.innerHTML = "Enviando...";
+            btn.disabled = true;
+
+            setTimeout(() => {
+                alert("¡Gracias por comunicarte con nosotros! Hemos recibido tu mensaje y te responderemos a la brevedad.");
+                this.reset();
+                btn.innerHTML = "Enviar Mensaje";
+                btn.disabled = false;
+            }, 1000);
+        });
+    </script>
+    </main>
+</body>
+</html>
