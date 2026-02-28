@@ -96,13 +96,15 @@ document.addEventListener("DOMContentLoaded", function() {
         
         // Recoger datos del formulario
         const nuevoItem = {
-            id: inputId.value ? parseInt(inputId.value) : Date.now(), // Usa ID existente o crea uno nuevo con la fecha
+            id: inputId.value ? parseInt(inputId.value) : Date.now(),
             nombre: document.getElementById("itemNombre").value,
             descripcion: document.getElementById("itemDesc").value,
             precio: parseFloat(document.getElementById("itemPrecio").value),
             tipo: selectTipo.value,
             stock: selectTipo.value === "producto" ? parseInt(inputStock.value) : null,
-            imagen: document.getElementById("itemImg").value
+            
+            // Usamos la imagen convertida. Si no subió nada, una por defecto.
+            imagen: imagenActualBase64 || "assets/Imagenes/logo.png" 
         };
 
         if (inputId.value) {
@@ -119,6 +121,33 @@ document.addEventListener("DOMContentLoaded", function() {
         guardarInventario(inventario);
         resetearFormulario();
     });
+
+    // Lógica para manejar la imagen del ítem
+    let imagenActualBase64 = ""; 
+    const inputImg = document.getElementById("itemImg");
+
+    // Al seleccionar imagen, convertirla a Base64 para almacenarla en el inventario
+    if(inputImg) {
+        inputImg.addEventListener("change", function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            // Validar que la imagen no sea muy pesada
+            if(file.size > 10 * 1024 * 1024) {
+                alert("La imagen es muy pesada. Por favor sube una de menos de 10MB para no saturar la memoria.");
+                this.value = ""; // Limpiar el input
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(evento) {
+                
+                imagenActualBase64 = evento.target.result; 
+            };
+            // Convertir la imagen a un texto Base64
+            reader.readAsDataURL(file);
+        });
+    }
 
     // --- Funciones Globales para los botones de la tabla ---
     window.eliminarItem = function(id) {
@@ -140,9 +169,11 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("itemDesc").value = item.descripcion;
             document.getElementById("itemPrecio").value = item.precio;
             selectTipo.value = item.tipo;
-            document.getElementById("itemImg").value = item.imagen;
+            
+            if(inputImg) inputImg.value = ""; 
+            
+            imagenActualBase64 = item.imagen;
 
-            // Disparar manualmente el evento change para mostrar/ocultar stock
             selectTipo.dispatchEvent(new Event("change"));
             if (item.tipo === "producto") {
                 inputStock.value = item.stock;
@@ -159,10 +190,10 @@ document.addEventListener("DOMContentLoaded", function() {
     function resetearFormulario() {
         formInventario.reset();
         inputId.value = "";
+        imagenActualBase64 = "";
         formTitulo.textContent = "Agregar Nuevo Item";
         btnCancelar.style.display = "none";
         selectTipo.dispatchEvent(new Event("change")); 
     }
-
     renderizarTabla();
 });
