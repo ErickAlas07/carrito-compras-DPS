@@ -18,6 +18,35 @@
     box-sizing: border-box;
 }
 
+/* ===== NOTIFICACIONES (CARRITO) ===== */
+.toast-notificacion {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--color-dorado);
+    color: #fff;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    z-index: 9999;
+    font-weight: bold;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toast-notificacion.mostrar {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.toast-error {
+    background-color: #e74c3c; 
+}
+
 body {
     background-color: var(--color-fondo-principal);
     color: var(--color-texto-principal);

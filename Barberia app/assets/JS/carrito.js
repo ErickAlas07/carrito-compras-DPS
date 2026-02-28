@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (closeModal) closeModal.addEventListener("click", window.toggleModal);
   if (cartOverlay) cartOverlay.addEventListener("click", window.toggleModal);
 
-  // --- Funcinones para redirecciones y vaciar carrito ---
+  // --- Funciones para redirecciones y vaciar carrito ---
   const btnFinalizarCompra = document.querySelector(".btn-finalizar-compra");
   if (btnFinalizarCompra) {
     btnFinalizarCompra.addEventListener("click", function () {
@@ -132,132 +132,215 @@ document.addEventListener("DOMContentLoaded", function () {
   window.actualizarCarritoScreen();
 });
 
-// Agregar al carrito verificando el stock
+// =================================================================
+// FUNCIONES GLOBALES 
+// =================================================================
+
+// 1. Mostrar Notificación 
+window.mostrarNotificacion = function(mensaje, esError = false) {
+    const toastViejo = document.querySelector(".toast-notificacion");
+    if (toastViejo) toastViejo.remove();
+
+    const toast = document.createElement("div");
+    toast.className = `toast-notificacion ${esError ? 'toast-error' : ''}`;
+    const icono = esError ? '⚠️' : '🛒';
+    toast.innerHTML = `<span style="margin-right:8px">${icono}</span> <span>${mensaje}</span>`;
+    document.body.appendChild(toast);
+
+    setTimeout(() => toast.classList.add("mostrar"), 10);
+    setTimeout(() => {
+        toast.classList.remove("mostrar");
+        setTimeout(() => toast.remove(), 300);
+    }, 4000);
+};
+
+// 2. Agregar al carrito
 window.agregarAlCarritoDinamico = function(id, nombre, precio, tipo) {
-  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-  let inventario = JSON.parse(localStorage.getItem("inventario")) || [];
-  
-  const productoExistenteEnCarrito = carrito.find((item) => item.id === id);
-  const itemEnInventario = inventario.find(item => item.id === id);
-
-  // Validación de Stock ANTES de agregar
-  if (tipo === "producto") {
-      let cantidadActual = productoExistenteEnCarrito ? productoExistenteEnCarrito.cantidad : 0;
-      if (cantidadActual + 1 > itemEnInventario.stock) {
-          alert(`Lo sentimos, solo tenemos ${itemEnInventario.stock} unidades de ${nombre} en stock.`);
-          return; // Detiene la función, no lo agrega
-      }
-  }
-
-  // Agrega o suma 1
-  if (productoExistenteEnCarrito) {
-      productoExistenteEnCarrito.cantidad += 1;
-  } else {
-      carrito.push({ id, nombre, precio, cantidad: 1, tipo });
-  }
-
-  localStorage.setItem("carrito", JSON.stringify(carrito));
-  
-  // Actualiza la pantalla del modal
-  window.actualizarCarritoScreen();
-  
-  // Abre el modal lateral si está cerrado
-  const cartModal = document.querySelector(".cart-modal");
-  if (cartModal && !cartModal.classList.contains("active")) {
-      window.toggleModal();
-  }
-};
-
-// Eliminar del carrito
-window.eliminarProducto = function (index) {
-  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-  carrito.splice(index, 1);
-  localStorage.setItem("carrito", JSON.stringify(carrito));
-
-  window.actualizarCarritoScreen();
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    let inventario = JSON.parse(localStorage.getItem("inventario")) || [];
     
-  const carritoLista = document.getElementById("carrito-lista");
-  if(carritoLista) location.reload(); 
+    const productoExistenteEnCarrito = carrito.find((item) => item.id === id);
+    const itemEnInventario = inventario.find(item => item.id === id);
+    let cantidadActual = productoExistenteEnCarrito ? productoExistenteEnCarrito.cantidad : 0;
+
+    // Validación de cantidad máxima por producto
+    if (cantidadActual >= 5) {
+        window.mostrarNotificacion(`No puedes agregar más de 5 unidades de "${nombre}".`, true);
+        return;
+    }
+
+    // Validación de Stock
+    if (tipo === "producto") {
+        if (cantidadActual + 1 > itemEnInventario.stock) {
+            window.mostrarNotificacion(`Solo tenemos ${itemEnInventario.stock} unidades de "${nombre}" en stock.`, true);
+            return;
+        }
+    }
+
+    // Agrega o suma 1
+    if (productoExistenteEnCarrito) {
+        productoExistenteEnCarrito.cantidad += 1;
+    } else {
+        carrito.push({ id, nombre, precio, cantidad: 1, tipo });
+    }
+
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    window.actualizarCarritoScreen();
+    
+    // Notificación de éxito
+    window.mostrarNotificacion(`¡"${nombre}" añadido a tu carrito!`);
 };
 
-// Actualizar todos los contadores e interfaces del carrito
+// 3. Modificar cantidad desde el carrito
+window.cambiarCantidad = function(index, delta) {
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    let inventario = JSON.parse(localStorage.getItem("inventario")) || [];
+    
+    if(!carrito[index]) return;
+    let item = carrito[index];
+    let nuevaCantidad = item.cantidad + delta;
+    
+    if (nuevaCantidad < 1) return; // Si llega a 0, ignora. El usuario debe usar la 'X' para borrar.
+    
+    if (nuevaCantidad > 5) {
+        window.mostrarNotificacion(`Límite de 5 unidades alcanzado.`, true);
+        return;
+    }
+    
+    if (item.tipo === "producto" && delta > 0) {
+        const itemEnInventario = inventario.find(inv => inv.id === item.id);
+        if (itemEnInventario && nuevaCantidad > itemEnInventario.stock) {
+            window.mostrarNotificacion(`Stock máximo alcanzado para este producto.`, true);
+            return;
+        }
+    }
+    
+    item.cantidad = nuevaCantidad;
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    window.actualizarCarritoScreen();
+};
+
+// 4. Eliminar del carrito
+window.eliminarProducto = function (index) {
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    carrito.splice(index, 1);
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+
+    window.actualizarCarritoScreen();
+    
+    const carritoLista = document.getElementById("carrito-lista");
+    if(carritoLista) location.reload(); 
+};
+
+// 5. Actualizar todos los contadores e interfaces del carrito
 window.actualizarCarritoScreen = function() {
-  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-  let totalGeneral = 0;
-  let cantidadTotal = 0;
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    let totalGeneral = 0;
+    let cantidadTotal = 0;
 
-  // Actualización del badge
-  const cartBadge = document.getElementById("cartCount");
-  if (cartBadge) {
-    carrito.forEach((item) => (cantidadTotal += item.cantidad));
-    cartBadge.textContent = cantidadTotal;
-  }
-
-  // Actualización del Modal Lateral
-  const modalCartItems = document.getElementById("modalCartItems");
-  const modalTotal = document.getElementById("modalTotal");
-
-  if (modalCartItems && modalTotal) {
-    if (carrito.length === 0) {
-      modalCartItems.innerHTML = '<div class="cart-empty"><p>Tu carrito está vacío.</p></div>';
-      modalTotal.textContent = "$0.00";
-    } else {
-      modalCartItems.innerHTML = "";
-
-      carrito.forEach((producto, index) => {
-        const subtotal = producto.precio * producto.cantidad;
-        totalGeneral += subtotal;
-
-        modalCartItems.innerHTML += `
-          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; padding: 10px 0; margin-bottom: 10px;">
-              <div>
-                  <p style="font-weight: bold; margin: 0; color: #333;">${producto.nombre}</p>
-                  <p style="margin: 0; color: #666; font-size: 0.9em;">${producto.cantidad} x $${producto.precio.toFixed(2)}</p>
-              </div>
-              <button onclick="eliminarProducto(${index})" style="background:none; border:none; color:red; cursor:pointer; font-size:1.2em;">&times;</button>
-          </div>
-        `;
-      });
-
-      modalTotal.textContent = `$${totalGeneral.toFixed(2)}`;
+    // Actualización del badge (contador)
+    const cartBadge = document.getElementById("cartCount");
+    if (cartBadge) {
+        carrito.forEach((item) => (cantidadTotal += item.cantidad));
+        cartBadge.textContent = cantidadTotal;
     }
-  }
 
-  // Actualización de la Tabla de la página de Carrito 
-  const carritoLista = document.getElementById("carrito-lista");
-  const carritoVacio = document.getElementById("carritoVacio");
-  const carritoConProductos = document.getElementById("carritoConProductos");
-  const totalElementoTabla = document.getElementById("total-general");
+    // Actualización del Modal Lateral
+    const modalCartItems = document.getElementById("modalCartItems");
+    const contenedorTotal = document.querySelector(".modal-total");
 
-  if (carritoLista) {
-    if (carrito.length === 0) {
-      if (carritoVacio) carritoVacio.style.display = "block";
-      if (carritoConProductos) carritoConProductos.style.display = "none";
-    } else {
-      if (carritoVacio) carritoVacio.style.display = "none";
-      if (carritoConProductos) carritoConProductos.style.display = "block";
+    if (modalCartItems && contenedorTotal) {
+        if (carrito.length === 0) {
+            modalCartItems.innerHTML = '<div class="cart-empty"><p>Tu carrito está vacío.</p></div>';
+            contenedorTotal.innerHTML = `<span>Total:</span> <span class="total-price" id="modalTotal">$0.00</span>`;
+        } else {
+            modalCartItems.innerHTML = "";
 
-      carritoLista.innerHTML = "";
-      let totalTabla = 0;
+            carrito.forEach((producto, index) => {
+                const subtotal = producto.precio * producto.cantidad;
+                totalGeneral += subtotal;
 
-      carrito.forEach((producto, index) => {
-        const subtotal = producto.precio * producto.cantidad;
-        totalTabla += subtotal;
+                modalCartItems.innerHTML += `
+                    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; padding: 15px 0;">
+                        <div style="flex: 1;">
+                            <p style="font-weight: bold; margin: 0 0 8px 0; color: #333;">${producto.nombre}</p>
+                            
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <div style="display: flex; border: 1px solid #ddd; border-radius: 4px; overflow: hidden;">
+                                    <button onclick="cambiarCantidad(${index}, -1)" style="background: #f8f9fa; border: none; padding: 3px 10px; cursor: pointer; color:#333; font-weight: bold; transition: 0.2s;">-</button>
+                                    <span style="padding: 3px 12px; border-left: 1px solid #ddd; border-right: 1px solid #ddd; font-size: 0.95em;">${producto.cantidad}</span>
+                                    <button onclick="cambiarCantidad(${index}, 1)" style="background: #f8f9fa; border: none; padding: 3px 10px; cursor: pointer; color:#333; font-weight: bold; transition: 0.2s;">+</button>
+                                </div>
+                                <span style="color: #666; font-size: 0.85em;">x $${producto.precio.toFixed(2)}</span>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 10px;">
+                            <span style="font-weight: bold; color: var(--color-dorado); font-size: 1.1em;">$${subtotal.toFixed(2)}</span>
+                            <button onclick="eliminarProducto(${index})" style="background:none; border:none; color:#e74c3c; cursor:pointer; font-size:1.3em;" title="Quitar todo">&times;</button>
+                        </div>
+                    </div>
+                `;
+            });
 
-        const fila = document.createElement("tr");
-        fila.innerHTML = `
-            <td>${producto.nombre}</td>
-            <td>$${producto.precio.toFixed(2)}</td>
-            <td>${producto.cantidad}</td>
-            <td>$${subtotal.toFixed(2)}</td>
-            <td><button onclick="eliminarProducto(${index})" style="padding: 5px 10px; cursor: pointer;">Eliminar</button></td>
-        `;
-        carritoLista.appendChild(fila);
-      });
+            // DESGLOSE DEL IVA
+            let subtotalSinIva = totalGeneral / 1.13;
+            let iva = totalGeneral - subtotalSinIva;
 
-      if (totalElementoTabla) {
-        totalElementoTabla.textContent = totalTabla.toFixed(2);
-      }
+            contenedorTotal.innerHTML = `
+                <div style="width: 100%; display: flex; flex-direction: column; gap: 6px; font-size: 0.9rem; color: #666;">
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>Subtotal:</span>
+                        <span>$${subtotalSinIva.toFixed(2)}</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>IVA (13%):</span>
+                        <span>$${iva.toFixed(2)}</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 1.2rem; color: #333; font-weight: bold; margin-top: 8px; border-top: 2px solid #eee; padding-top: 8px;">
+                        <span>Total General:</span>
+                        <span class="total-price" id="modalTotal">$${totalGeneral.toFixed(2)}</span>
+                    </div>
+                </div>
+            `;
+        }
     }
-  }
+
+    // Actualización de la Tabla grande de la página Carrito 
+    const carritoLista = document.getElementById("carrito-lista");
+    const carritoVacio = document.getElementById("carritoVacio");
+    const carritoConProductos = document.getElementById("carritoConProductos");
+    const totalElementoTabla = document.getElementById("total-general");
+
+    if (carritoLista) {
+        if (carrito.length === 0) {
+            if (carritoVacio) carritoVacio.style.display = "block";
+            if (carritoConProductos) carritoConProductos.style.display = "none";
+        } else {
+            if (carritoVacio) carritoVacio.style.display = "none";
+            if (carritoConProductos) carritoConProductos.style.display = "block";
+
+            carritoLista.innerHTML = "";
+            let totalTabla = 0;
+
+            carrito.forEach((producto, index) => {
+                const subtotal = producto.precio * producto.cantidad;
+                totalTabla += subtotal;
+
+                const fila = document.createElement("tr");
+                fila.innerHTML = `
+                    <td>${producto.nombre}</td>
+                    <td>$${producto.precio.toFixed(2)}</td>
+                    <td>${producto.cantidad}</td>
+                    <td>$${subtotal.toFixed(2)}</td>
+                    <td><button onclick="eliminarProducto(${index})" style="padding: 5px 10px; cursor: pointer;">Eliminar</button></td>
+                `;
+                carritoLista.appendChild(fila);
+            });
+
+            if (totalElementoTabla) {
+                totalElementoTabla.textContent = totalTabla.toFixed(2);
+            }
+        }
+    }
 };
